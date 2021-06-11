@@ -1,0 +1,14 @@
+{
+  "hosting": {
+    "rewrites": [
+      {
+        "source": "/**",
+        "run": {
+          "serviceId": "react-ssr",
+          "region": "australia-southeast1"
+        }
+      }
+    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}
