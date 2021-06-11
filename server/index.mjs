@@ -12,7 +12,7 @@ const root = process.cwd()
 async function main() {
   const app = fastify({
     http2: isProduction,
-    logger: false,
+    logger: isProduction,
   })
 
   await app.register(compression, { global: true, })
