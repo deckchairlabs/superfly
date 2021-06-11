@@ -1,19 +1,19 @@
 import React from 'react'
 import { Box, Heading } from 'theme-ui'
 
-export default function IndexPage() {
+export default function IndexPage(props: any) {
   return (
     <Box
       sx={{
         backgroundColor: ['blue', 'red'],
       }}
     >
-      <Heading sx={{}}>
-        Hello World!{' '}
-        {new Date().toLocaleString('en-AU', {
-          timeZone: 'Australia/Adelaide',
-        })}
-      </Heading>
+      <Heading>Hello World!</Heading>
+      <Heading>Last rendered: {new Date().toString()}</Heading>
+      <Box>
+        <strong>Page props</strong>
+        <pre>{JSON.stringify(props, null, 2)}</pre>
+      </Box>
     </Box>
   )
 }

@@ -37,7 +37,15 @@ async function main() {
   const renderPage = createPageRender({ viteDevServer, isProduction, root })
 
   app.all('*', async (request, reply) => {
-    const renderContext = { url: request.url, isProduction }
+    const renderContext = {
+      url: request.url,
+      isProduction,
+      pageProps: {
+        service: process.env.K_SERVICE,
+        revision: process.env.K_REVISION || 'dev',
+      }
+    }
+
     const result = await renderPage(renderContext)
 
     if (result.nothingRendered) {
