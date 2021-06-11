@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react'
 import { ThemeProvider } from 'theme-ui'
+import * as components from '@theme-ui/components'
 import theme from '../../theme'
 import Scripts from './Scripts'
 
@@ -14,7 +15,7 @@ export default function Root({ children }: RootProps) {
         <title>Superfly</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme} components={components}>
         <body>
           {children}
           <Scripts />
