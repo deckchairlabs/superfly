@@ -36,7 +36,12 @@ async function main() {
 
   const renderPage = createPageRender({ viteDevServer, isProduction, root })
 
-  app.all('*', async (request, reply) => {
+  app.get('*', async (request, reply) => {
+
+    if (request.url.endsWith('/favicon.ico')) {
+      reply.code(204).send(null)
+    }
+
     const renderContext = {
       url: request.url,
       isProduction,
@@ -48,13 +53,20 @@ async function main() {
 
     const result = await renderPage(renderContext)
 
+    /**
+     * We only want to cache things that can be cached
+     */
+    const cacheableStatusCodes = [200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501]
+    if (cacheableStatusCodes.includes(result.statusCode)) {
+      reply.header('cache-control', 'public, max-age=3600, s-maxage=7200')
+    }
+
     if (result.nothingRendered) {
-      reply.code(204).send(null)
+      reply.code(404).send(null)
     } else {
       reply
         .code(result.statusCode)
         .type('text/html')
-        .header('cache-control', 'public, max-age=3600, s-maxage=7200')
         .send(result.renderResult)
     }
   })
