@@ -1,3 +1,6 @@
+import debugAgent from '@google-cloud/debug-agent'
+debugAgent.start({ serviceContext: { enableCanary: false } })
+
 import fastify from 'fastify'
 import middie from 'middie'
 import compression from 'fastify-compress'
