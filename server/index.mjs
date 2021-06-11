@@ -58,7 +58,7 @@ async function main() {
      */
     const cacheableStatusCodes = [200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501]
     if (cacheableStatusCodes.includes(result.statusCode)) {
-      reply.header('cache-control', 'public, max-age=3600, s-maxage=7200')
+      reply.header('cache-control', 'public, max-age=3600, s-maxage=300')
     }
 
     if (result.nothingRendered) {

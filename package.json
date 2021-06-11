@@ -1,7 +1,8 @@
 {
   "name": "superfly",
   "scripts": {
-    "start": "nodemon --watch \"server/**\" --ext \"mjs\" --exec \"node ./server/index.mjs\"",
+    "dev": "nodemon --watch \"server/**\" --ext \"mjs\" --exec \"node ./server/index.mjs\"",
+    "start": "node ./server/index.mjs",
     "build": "vite build && vite build --ssr",
     "deploy": "yarn deploy:run && yarn deploy:firebase",
     "deploy:run": "gcloud beta run deploy react-ssr --use-http2 --source=.",
