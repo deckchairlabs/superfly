@@ -13,6 +13,8 @@ export default {
   styles: {
     root: {
       fontFamily: 'body',
+      color: 'text',
+      backgroundColor: 'background',
     },
   },
 }

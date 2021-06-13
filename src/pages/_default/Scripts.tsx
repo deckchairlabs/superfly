@@ -26,7 +26,6 @@ export default function Scripts() {
           __html: `window.__vite_plugin_ssr__pageContext = {pageId:'/src/pages/index',pageProps:{}}`,
         }}
       ></script>
-      <script type="module" src="/src/pages/_default.page.client.tsx"></script>
     </React.Fragment>
   )
 }

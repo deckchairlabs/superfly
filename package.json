@@ -1,7 +1,7 @@
 {
   "name": "superfly",
   "scripts": {
-    "dev": "nodemon --watch \"server/**\" --ext \"mjs\" --exec \"node ./server/index.mjs\"",
+    "dev": "FIRESTORE_EMULATOR_HOST=localhost:8080 nodemon --watch \"server/**\" --ext \"mjs\" --exec \"node ./server/index.mjs\"",
     "start": "node ./server/index.mjs",
     "build": "vite build && vite build --ssr",
     "deploy": "yarn deploy:run && yarn deploy:firebase",
@@ -16,6 +16,8 @@
     "fastify": "^3.17.0",
     "fastify-compress": "^3.5.0",
     "fastify-static": "^4.2.2",
+    "firebase-admin": "^9.9.0",
+    "mdx-bundler": "^4.1.0",
     "middie": "^5.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

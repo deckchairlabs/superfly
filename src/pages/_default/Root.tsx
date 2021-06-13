@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { ThemeProvider } from 'theme-ui'
-import * as components from '@theme-ui/components'
 import theme from '../../theme'
+import components from './components'
 import Scripts from './Scripts'
 
 type RootProps = {
