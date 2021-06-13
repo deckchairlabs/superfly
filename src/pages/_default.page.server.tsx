@@ -42,6 +42,8 @@ export async function addPageContext(pageContext: PageContext) {
     const result = await bundleMDX(data.content)
     return { pageProps: result }
   }
+
+  return {}
 }
 
 export const passToClient = ['pageProps', 'documentProps']
