@@ -30,16 +30,21 @@ type PageContext = {
 
 export async function addPageContext(pageContext: PageContext) {
   const normalizedUrl = pageContext.urlNormalized.endsWith('/')
-    ? '/index'
+    ? `${pageContext.urlNormalized}index`
     : pageContext.urlNormalized
 
-  const documentReference = firestore.doc(`pages${normalizedUrl}`)
+  const documentPath = normalizedUrl
+    .split('/')
+    .filter(Boolean)
+    .join('/children/')
+
+  const documentReference = firestore.doc(`pages/${documentPath}`)
   const documentSnapshot = await documentReference.get()
 
   const data = documentSnapshot.data()
 
   if (data && documentSnapshot.exists) {
-    const result = await bundleMDX(data.content)
+    const result = await bundleMDX(data.content || '# No content')
     return { pageProps: result }
   }
 
