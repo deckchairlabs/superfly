@@ -4,6 +4,8 @@
     "dev": "FIRESTORE_EMULATOR_HOST=localhost:8080 nodemon --watch \"server/**\" --ext \"mjs\" --exec \"node ./server/index.mjs\"",
     "start": "node ./server/index.mjs",
     "build": "vite build && vite build --ssr",
+    "build:functions": "yarn --cwd functions run build",
+    "emulators": "firebase emulators:start",
     "deploy": "yarn deploy:run && yarn deploy:firebase",
     "deploy:run": "gcloud beta run deploy react-ssr --use-http2 --source=.",
     "deploy:firebase": "firebase deploy --only=hosting"

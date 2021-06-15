@@ -4,7 +4,7 @@ import { bundleMDX } from 'mdx-bundler'
 import React from 'react'
 import Root from './_default/Root'
 import mdxComponents from './_default/components'
-import { firestore } from '../services/firebase'
+// import { firestore } from '../services/firebase'
 
 type RenderContext = {
   Page: React.ComponentType
@@ -29,26 +29,27 @@ type PageContext = {
 }
 
 export async function addPageContext(pageContext: PageContext) {
-  const normalizedUrl = pageContext.urlNormalized.endsWith('/')
-    ? `${pageContext.urlNormalized}index`
-    : pageContext.urlNormalized
+  // const normalizedUrl = pageContext.urlNormalized.endsWith('/')
+  //   ? `${pageContext.urlNormalized}index`
+  //   : pageContext.urlNormalized
 
-  const documentPath = normalizedUrl
-    .split('/')
-    .filter(Boolean)
-    .join('/children/')
+  // const documentPath = normalizedUrl
+  //   .split('/')
+  //   .filter(Boolean)
+  //   .join('/children/')
 
-  const documentReference = firestore.doc(`pages/${documentPath}`)
-  const documentSnapshot = await documentReference.get()
+  // const documentReference = firestore.doc(`pages/${documentPath}`)
+  // const documentSnapshot = await documentReference.get()
 
-  const data = documentSnapshot.data()
+  // const data = documentSnapshot.data()
+  let content: string = '# No content'
 
-  if (data && documentSnapshot.exists) {
-    const result = await bundleMDX(data.content || '# No content')
-    return { pageProps: result }
-  }
+  // if (data && documentSnapshot.exists) {
+  //   content = data.content
+  // }
 
-  return {}
+  const result = await bundleMDX(content)
+  return { pageProps: result }
 }
 
 export const passToClient = ['pageProps', 'documentProps']

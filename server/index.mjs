@@ -39,12 +39,12 @@ async function main() {
 
   const renderPage = createPageRender({ viteDevServer, isProduction, root })
 
+  app.get('/favicon.ico', (_, reply) => {
+    reply.code(204)
+    reply.send('')
+  })
+
   app.get('*', async (request, reply) => {
-
-    if (request.url.endsWith('/favicon.ico')) {
-      reply.code(204).send(null)
-    }
-
     const renderContext = {
       url: request.url,
       isProduction,
@@ -61,7 +61,7 @@ async function main() {
      */
     const cacheableStatusCodes = [200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501]
     if (cacheableStatusCodes.includes(result.statusCode)) {
-      reply.header('cache-control', 'public, max-age=300, stale-while-revalidate=3600')
+      reply.header('cache-control', 'public, max-age=900, stale-while-revalidate=60, stale-if-error=86400')
     }
 
     if (result.nothingRendered) {
