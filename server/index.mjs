@@ -13,6 +13,7 @@ const port = process.env.PORT || 3000
 const root = process.cwd()
 
 async function main() {
+
   const app = fastify({
     http2: isProduction,
     logger: isProduction,

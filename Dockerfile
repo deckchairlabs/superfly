@@ -26,6 +26,4 @@ COPY --from=builder /app/package.json ./package.json
 
 USER app
 
-EXPOSE 3000
-
-CMD ["yarn", "start"]
+CMD ["node", "./server/index.mjs"]
