@@ -23,12 +23,12 @@ let viteDevServer
 
 if (isProduction) {
   await import(`${root}/dist/server/importer.js`)
-  app.register(fastifyStatic, {
+  await app.register(fastifyStatic, {
     root: `${root}/dist/client/assets`,
     prefix: '/assets'
   })
 } else {
-  app.register(middie)
+  await app.register(middie)
   viteDevServer = await vite.createServer({
     root,
     server: { middlewareMode: true },
