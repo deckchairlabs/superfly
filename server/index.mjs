@@ -40,6 +40,7 @@ async function main() {
   const renderPage = createPageRender({ viteDevServer, isProduction, root })
 
   app.get('/favicon.ico', (_, reply) => {
+    reply.header('cache-control', 'public, max-age=86400')
     reply.code(204)
     reply.send('')
   })
