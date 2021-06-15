@@ -14,6 +14,7 @@ export default function Root({ children }: RootProps) {
       <head>
         <title>Superfly</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
       </head>
       <ThemeProvider theme={theme} components={components}>
         <body>
