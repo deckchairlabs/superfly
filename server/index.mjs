@@ -65,9 +65,6 @@ app.get('*', async (request, reply) => {
     reply.header('cache-control', 'public, max-age=900, stale-while-revalidate=3600, stale-if-error=86400')
   }
 
-  reply.header('x-revision', process.env.K_REVISION || 'dev')
-  reply.header('vary', 'accept-encoding, x-revision')
-
   if (result.nothingRendered) {
     reply.code(404).send(null)
   } else {
