@@ -9,9 +9,10 @@ import mdxComponents from './_default/components'
 type RenderContext = {
   Page: React.ComponentType
   pageProps: any
+  pageExports: any
 }
 
-export function render({ Page, pageProps }: RenderContext) {
+export function render({ Page, pageProps, ...renderContext }: RenderContext) {
   const Content = getMDXComponent(pageProps.code)
 
   return ReactDOMServer.renderToNodeStream(
