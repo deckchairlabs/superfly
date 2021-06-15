@@ -12,34 +12,33 @@ const isProduction = process.env.NODE_ENV === 'production'
 const port = process.env.PORT || 3000
 const root = process.cwd()
 
-async function main() {
+const app = fastify({
+  http2: isProduction,
+  logger: isProduction,
+})
 
-  const app = fastify({
-    http2: isProduction,
-    logger: isProduction,
+app.register(compression, { global: true, })
+
+let viteDevServer
+
+if (isProduction) {
+  await import(`${root}/dist/server/importer.js`)
+  await app.register(fastifyStatic, {
+    root: `${root}/dist/client/assets`,
+    prefix: '/assets'
   })
+} else {
+  await app.register(middie)
+  viteDevServer = await vite.createServer({
+    root,
+    server: { middlewareMode: true },
+  })
+  app.use(viteDevServer.middlewares)
+}
 
-  await app.register(compression, { global: true, })
+const renderPage = createPageRender({ viteDevServer, isProduction, root })
 
-  let viteDevServer
-
-  if (isProduction) {
-    await import(`${root}/dist/server/importer.js`)
-    await app.register(fastifyStatic, {
-      root: `${root}/dist/client/assets`,
-      prefix: '/assets'
-    })
-  } else {
-    await app.register(middie)
-    viteDevServer = await vite.createServer({
-      root,
-      server: { middlewareMode: true },
-    })
-    app.use(viteDevServer.middlewares)
-  }
-
-  const renderPage = createPageRender({ viteDevServer, isProduction, root })
-
+async function main() {
   app.get('/favicon.ico', (_, reply) => {
     reply.header('cache-control', 'public, max-age=86400')
     reply.code(204)
