@@ -26,6 +26,7 @@ type PageContext = {
   urlNormalized: string
   urlPathname: string
   isProduction: boolean
+  pageProps: any
 }
 
 export async function addPageContext(pageContext: PageContext) {
@@ -42,7 +43,13 @@ export async function addPageContext(pageContext: PageContext) {
   // const documentSnapshot = await documentReference.get()
 
   // const data = documentSnapshot.data()
-  let content: string = '# No content'
+  let content: string = `<Box padding={[2, 3]}>
+    <Heading>Hello World</Heading>
+    <Box>
+      <strong>Last rendered:</strong> ${new Date().toUTCString()}
+    </Box>
+    <Box><strong>Revision:</strong> ${pageContext.pageProps.revision}</Box>
+  </Box>`
 
   // if (data && documentSnapshot.exists) {
   //   content = data.content
