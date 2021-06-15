@@ -60,9 +60,13 @@ app.get('*', async (request, reply) => {
    * We only want to cache things that can be cached
    */
   const cacheableStatusCodes = [200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501]
+
   if (cacheableStatusCodes.includes(result.statusCode)) {
     reply.header('cache-control', 'public, max-age=900, stale-while-revalidate=3600, stale-if-error=86400')
   }
+
+  reply.header('x-revision', process.env.K_REVISION || 'dev')
+  reply.header('vary', 'accept-encoding, x-revision')
 
   if (result.nothingRendered) {
     reply.code(404).send(null)
