@@ -9,10 +9,16 @@ import mdxComponents from './_default/components'
 type RenderContext = {
   Page: React.ComponentType
   pageProps: any
-  pageExports: any
+  pageExports: {
+    links?: () => Promise<any>
+  }
 }
 
-export function render({ Page, pageProps, ...renderContext }: RenderContext) {
+export async function render({
+  Page,
+  pageProps,
+  ...renderContext
+}: RenderContext) {
   const Content = getMDXComponent(pageProps.code)
 
   return ReactDOMServer.renderToNodeStream(
@@ -57,7 +63,7 @@ export async function addPageContext(pageContext: PageContext) {
   // }
 
   const result = await bundleMDX(content)
-  return { pageProps: result }
+  return { pageProps: { ...result, ...pageContext.pageProps } }
 }
 
 export const passToClient = ['pageProps', 'documentProps']

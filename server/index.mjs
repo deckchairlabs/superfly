@@ -2,6 +2,7 @@ import debugAgent from '@google-cloud/debug-agent'
 debugAgent.start({ serviceContext: { enableCanary: false } })
 
 import fastify from 'fastify'
+import fastifyHelmet from 'fastify-helmet'
 import middie from 'middie'
 import compression from 'fastify-compress'
 import fastifyStatic from 'fastify-static'
@@ -14,7 +15,11 @@ const root = process.cwd()
 
 const app = fastify({
   http2: isProduction,
-  logger: isProduction,
+  logger: true
+})
+
+app.register(fastifyHelmet, {
+  contentSecurityPolicy: false
 })
 
 app.register(compression, { global: true, })
@@ -51,7 +56,7 @@ app.get('*', async (request, reply) => {
     pageProps: {
       service: process.env.K_SERVICE,
       revision: process.env.K_REVISION || 'dev',
-    }
+    },
   }
 
   const result = await renderPage(renderContext)
@@ -76,6 +81,4 @@ app.get('*', async (request, reply) => {
 })
 
 await app.ready()
-const url = await app.listen(port, '0.0.0.0')
-
-console.log(`Server ready and listening at ${url}`)
+await app.listen(port, '0.0.0.0')

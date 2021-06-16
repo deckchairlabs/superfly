@@ -1,14 +1,23 @@
 import React, { ReactNode } from 'react'
 import { ThemeProvider } from 'theme-ui'
+import { CacheProvider } from '@emotion/react'
+import createCache from '@emotion/cache'
 import theme from '../../theme'
 import components from './components'
 import Scripts from './Scripts'
 
 type RootProps = {
   children?: ReactNode
+  styleNonce?: string
+  scriptNonce?: string
 }
 
-export default function Root({ children }: RootProps) {
+export default function Root({ children, ...pageProps }: RootProps) {
+  const cache = createCache({
+    key: 'css',
+    nonce: pageProps.styleNonce,
+  })
+
   return (
     <html>
       <head>
@@ -16,12 +25,14 @@ export default function Root({ children }: RootProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
       </head>
-      <ThemeProvider theme={theme} components={components}>
-        <body>
-          {children}
-          <Scripts />
-        </body>
-      </ThemeProvider>
+      <CacheProvider value={cache}>
+        <ThemeProvider theme={theme} components={components}>
+          <body>
+            {children}
+            <Scripts nonce={pageProps.scriptNonce} />
+          </body>
+        </ThemeProvider>
+      </CacheProvider>
     </html>
   )
 }

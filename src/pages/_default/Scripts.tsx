@@ -1,6 +1,10 @@
 import React from 'react'
 
-export default function Scripts() {
+type ScriptsProps = {
+  nonce?: string
+}
+
+export default function Scripts({ nonce }: ScriptsProps) {
   //@ts-ignore
   if (!import.meta.env.DEV) {
     return null
@@ -10,6 +14,7 @@ export default function Scripts() {
     <React.Fragment>
       <script type="module" src="/@vite/client"></script>
       <script
+        nonce={nonce}
         type="module"
         dangerouslySetInnerHTML={{
           __html: `
@@ -22,6 +27,7 @@ export default function Scripts() {
         }}
       ></script>
       <script
+        nonce={nonce}
         dangerouslySetInnerHTML={{
           __html: `window.__vite_plugin_ssr__pageContext = {pageId:'/src/pages/index',pageProps:{}}`,
         }}
