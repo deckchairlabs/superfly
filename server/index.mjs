@@ -45,7 +45,7 @@ const renderPage = createPageRender({ viteDevServer, isProduction, root })
 
 app.get('/favicon.ico', (_, reply) => {
   reply.header('cache-control', 'public, max-age=86400')
-  reply.code(204)
+  reply.status(204)
   reply.send('')
 })
 
@@ -66,15 +66,15 @@ app.get('*', async (request, reply) => {
    */
   const cacheableStatusCodes = [200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501]
 
-  if (cacheableStatusCodes.includes(result.statusCode)) {
+  if (isProduction && cacheableStatusCodes.includes(result.statusCode)) {
     reply.header('cache-control', 'public, max-age=900, stale-while-revalidate=86400, stale-if-error=86400')
   }
 
   if (result.nothingRendered) {
-    reply.code(404).send(null)
+    reply.status(404).send(null)
   } else {
     reply
-      .code(result.statusCode)
+      .status(result.statusCode)
       .type('text/html')
       .send(result.renderResult)
   }

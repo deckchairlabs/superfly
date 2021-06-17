@@ -10,6 +10,7 @@ const config: UserConfig = {
   clearScreen: false,
   build: {
     sourcemap: true,
+    minify: 'esbuild',
   },
 }
 

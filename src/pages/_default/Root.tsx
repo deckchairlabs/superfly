@@ -29,7 +29,7 @@ export default function Root({ children, ...pageProps }: RootProps) {
         <ThemeProvider theme={theme} components={components}>
           <body>
             {children}
-            <Scripts nonce={pageProps.scriptNonce} />
+            <Scripts />
           </body>
         </ThemeProvider>
       </CacheProvider>

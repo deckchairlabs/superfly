@@ -7513,6 +7513,11 @@ vite-plugin-ssr@0.1.1:
     fast-glob "^3.2.5"
     kolorist "^1.4.1"
 
+vite-plugin-virtual@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/vite-plugin-virtual/-/vite-plugin-virtual-0.1.1.tgz#34fff2d2816ebaad0d53fdcd3500d12ec9c5fa0e"
+  integrity sha512-JnEbO2AOIfpMfL/uSz7snJ4HzTxCbJFtw7xX413UrYY0IiZjAnY78Ie/Kd7k03iBlyQsFpdzdKQu+ULxu0UXMg==
+
 vite-react-jsx@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/vite-react-jsx/-/vite-react-jsx-1.1.1.tgz#4fe6c118b6a79a22c5553a2f0c19438093db0fe6"
