@@ -1,33 +1,62 @@
+import opentelemetry from '@opentelemetry/api'
 import {
     TraceIdRatioBasedSampler,
     HttpTraceContextPropagator,
 } from '@opentelemetry/core'
 import { NodeTracerProvider } from '@opentelemetry/node'
-import { SimpleSpanProcessor } from '@opentelemetry/tracing'
+import { BatchSpanProcessor } from '@opentelemetry/tracing'
+import { MeterProvider } from '@opentelemetry/metrics'
+import { HostMetrics } from '@opentelemetry/host-metrics'
 import { AsyncHooksContextManager } from '@opentelemetry/context-async-hooks'
-import { TraceExporter } from '@google-cloud/opentelemetry-cloud-trace-exporter'
+import env from './env.mjs'
 
-// Enable OpenTelemetry exporters to export traces to Google Cloud Trace.
-// Exporters use Application Default Credentials (ADCs) to authenticate.
-// See https://developers.google.com/identity/protocols/application-default-credentials
-// for more details.
-const provider = new NodeTracerProvider({
-    sampler: new TraceIdRatioBasedSampler(0.5),
-    resource: {
-        attributes: {
-            revision: process.env.K_REVISION
-        }
+let traceExporter = null
+let metricExporter = null
+
+const resource = {
+    attributes: {
+        'service.env': env.isProduction ? 'production' : 'development',
+        'service.name': env.serviceName,
+        'service.revision': env.serviceRevision
     }
+}
+
+if (env.isProduction) {
+    const { MetricExporter } = await import('@google-cloud/opentelemetry-cloud-monitoring-exporter');
+    const { TraceExporter } = await import('@google-cloud/opentelemetry-cloud-trace-exporter')
+    metricExporter = new MetricExporter()
+    traceExporter = new TraceExporter();
+} else {
+    const { JaegerExporter } = await import('@opentelemetry/exporter-jaeger');
+    traceExporter = new JaegerExporter({ serviceName: env.serviceName });
+}
+
+const spanProcessor = new BatchSpanProcessor(traceExporter)
+const tracePropagator = new HttpTraceContextPropagator()
+const contextManager = new AsyncHooksContextManager()
+
+if (metricExporter) {
+    const meterProvider = new MeterProvider({
+        exporter: metricExporter,
+        resource,
+        interval: env.isProduction ? 2000 : 10000,
+    });
+
+    const hostMetrics = new HostMetrics({ meterProvider, name: 'example-host-metrics' });
+    hostMetrics.start();
+}
+
+const tracerProvider = new NodeTracerProvider({
+    sampler: new TraceIdRatioBasedSampler(0.5),
+    resource,
 });
 
-provider.register({
-    contextManager: (new AsyncHooksContextManager()).enable(),
-    propagator: new HttpTraceContextPropagator(),
-})
+tracerProvider.register({
+    contextManager: contextManager.enable(),
+    propagator: tracePropagator,
+}).addSpanProcessor(spanProcessor);
 
-// Initialize the exporter. When your application is running on Google Cloud,
-// you don't need to provide auth credentials or a project id.
-const exporter = new TraceExporter();
-
-// Configure the span processor to send spans to the exporter
-provider.addSpanProcessor(new SimpleSpanProcessor(exporter));
+/**
+ * Set the global tracer provider
+ */
+opentelemetry.trace.setGlobalTracerProvider(tracerProvider);

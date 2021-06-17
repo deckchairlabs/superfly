@@ -3,6 +3,7 @@
     "strict": true,
     "module": "CommonJS",
     "target": "ES2017",
+    "checkJs": true,
     "lib": ["DOM"],
     "jsx": "react",
     "skipLibCheck": true,

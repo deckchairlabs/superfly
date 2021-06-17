@@ -7,20 +7,19 @@ import compression from 'fastify-compress'
 import fastifyStatic from 'fastify-static'
 import { createPageRender } from 'vite-plugin-ssr'
 import * as vite from 'vite'
+import env from './env.mjs'
 
-const isProduction = process.env.NODE_ENV === 'production'
+const isProduction = env.isProduction
 const enableHttp2 = process.env.HTTP2 === 'true'
 const port = process.env.PORT || 3000
 const root = process.cwd()
-const service = process.env.K_SERVICE
-const revision = process.env.K_REVISION || 'dev'
 
 const app = fastify({
   http2: enableHttp2,
   logger: true
 })
 
-app.register(openTelemetry, { serviceName: service, wrapRoutes: true })
+app.register(openTelemetry, { serviceName: env.serviceName, wrapRoutes: true })
 
 app.register(fastifyHelmet, {
   contentSecurityPolicy: false
@@ -57,12 +56,15 @@ app.get('*', async (request, reply) => {
     url: request.url,
     isProduction,
     pageProps: {
-      service,
-      revision,
+      service: env.serviceName,
+      revision: env.serviceRevision,
     },
   }
 
+  const { tracer } = request.openTelemetry()
+  const renderSpan = tracer.startSpan('render')
   const result = await renderPage(renderContext)
+  renderSpan.end()
 
   /**
    * We only want to cache things that can be cached
