@@ -1,5 +1,5 @@
 import debugAgent from '@google-cloud/debug-agent'
-debugAgent.start({ serviceContext: { enableCanary: false } })
+debugAgent.start({ serviceContext: { enableCanary: false }, javascriptFileExtensions: ['.js', '.mjs'] })
 
 import fastify from 'fastify'
 import fastifyHelmet from 'fastify-helmet'
@@ -10,11 +10,14 @@ import { createPageRender } from 'vite-plugin-ssr'
 import * as vite from 'vite'
 
 const isProduction = process.env.NODE_ENV === 'production'
+const enableHttp2 = process.env.HTTP2 === 'true'
 const port = process.env.PORT || 3000
 const root = process.cwd()
+const service = process.env.K_SERVICE
+const revision = process.env.K_REVISION || 'dev'
 
 const app = fastify({
-  http2: isProduction,
+  http2: enableHttp2,
   logger: true
 })
 
@@ -27,7 +30,6 @@ app.register(compression, { global: true, })
 let viteDevServer
 
 if (isProduction) {
-  await import(`${root}/dist/server/importer.js`)
   await app.register(fastifyStatic, {
     root: `${root}/dist/client/assets`,
     prefix: '/assets'
@@ -54,8 +56,8 @@ app.get('*', async (request, reply) => {
     url: request.url,
     isProduction,
     pageProps: {
-      service: process.env.K_SERVICE,
-      revision: process.env.K_REVISION || 'dev',
+      service,
+      revision,
     },
   }
 

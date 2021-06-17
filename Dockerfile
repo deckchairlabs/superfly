@@ -14,6 +14,7 @@ FROM node:alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
+ENV HTTP2 true
 ENV TZ UTC
 
 RUN addgroup -g 1001 -S nodejs
@@ -26,4 +27,4 @@ COPY --from=builder /app/package.json ./package.json
 
 USER app
 
-CMD ["node", "./server/index.mjs"]
+CMD ["node", "--experimental-json-modules", "./server/index.mjs"]

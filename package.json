@@ -2,7 +2,7 @@
   "name": "superfly",
   "scripts": {
     "dev": "FIRESTORE_EMULATOR_HOST=localhost:8080 nodemon --watch \"server/**\" --ext \"mjs\" --exec \"node ./server/index.mjs | pino-colada\"",
-    "start": "node ./server/index.mjs",
+    "start": "node --experimental-json-modules ./server/index.mjs",
     "build": "vite build && vite build --ssr",
     "build:functions": "yarn --cwd functions run build",
     "emulators": "firebase emulators:start",

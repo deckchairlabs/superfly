@@ -4,11 +4,6 @@ import { useServerContext } from '../../context/Server'
 export default function Scripts() {
   const { pageId, scriptNonce, pageProps, isProduction } = useServerContext()
 
-  //@ts-ignore
-  if (!import.meta.env.DEV) {
-    return null
-  }
-
   return (
     <React.Fragment>
       {!isProduction && (
