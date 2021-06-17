@@ -32,7 +32,10 @@ let viteDevServer
 if (isProduction) {
   await app.register(fastifyStatic, {
     root: `${root}/dist/client/assets`,
-    prefix: '/assets'
+    prefix: '/assets',
+    immutable: true,
+    cacheControl: true,
+    maxAge: 31536000
   })
 } else {
   await app.register(middie)
