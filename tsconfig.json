@@ -12,5 +12,5 @@
   "ts-node": {
     "transpileOnly": true
   },
-  "exclude": ["dist", "node_modules", "functions"]
+  "exclude": ["dist", "node_modules", "functions", "k6.js"]
 }
