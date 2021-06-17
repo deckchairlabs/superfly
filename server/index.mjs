@@ -1,4 +1,4 @@
-import './trace.mjs'
+// import './trace.mjs'
 import fastify from 'fastify'
 import openTelemetry from '@autotelic/fastify-opentelemetry'
 import fastifyHelmet from 'fastify-helmet'
@@ -55,10 +55,10 @@ app.get('*', async (request, reply) => {
   const renderContext = {
     url: request.url,
     isProduction,
-    pageProps: {
+    superfly: {
       service: env.serviceName,
       revision: env.serviceRevision,
-    },
+    }
   }
 
   const { tracer } = request.openTelemetry()

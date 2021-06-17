@@ -564,7 +564,7 @@
   dependencies:
     tslib "^2.1.0"
 
-"@google-cloud/common@^3.0.0", "@google-cloud/common@^3.6.0":
+"@google-cloud/common@^3.6.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@google-cloud/common/-/common-3.6.0.tgz#c2f6da5f79279a4a9ac7c71fc02d582beab98e8b"
   integrity sha512-aHIFTqJZmeTNO9md8XxV+ywuvXF3xBm5WNmgWeeCK+XN5X+kGW0WEX94wGwj+/MdOnrVf4dL2RvSIt9J5yJG6Q==
@@ -578,23 +578,6 @@
     google-auth-library "^7.0.2"
     retry-request "^4.1.1"
     teeny-request "^7.0.0"
-
-"@google-cloud/debug-agent@^5.2.2":
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/@google-cloud/debug-agent/-/debug-agent-5.2.2.tgz#958c50095113edc8867c3a2ca00c3e1cea2d4633"
-  integrity sha512-Jj2ZJArF6zSGqSDxeQ/EEen5hlIxtfOtdGhzvFmqHYtnbySGY1QVJtsFkxz9sDsjeHnJ120TDynac9OhUNlueQ==
-  dependencies:
-    "@google-cloud/common" "^3.0.0"
-    acorn "^8.0.0"
-    coffeescript "^2.0.0"
-    console-log-level "^1.4.0"
-    extend "^3.0.2"
-    findit2 "^2.2.3"
-    gcp-metadata "^4.0.0"
-    p-limit "^3.0.1"
-    semver "^7.0.0"
-    source-map "^0.7.3"
-    split "^1.0.0"
 
 "@google-cloud/firestore@^4.5.0":
   version "4.12.2"
@@ -795,6 +778,11 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
+"@nuxt/devalue@^2.0.0-0":
+  version "2.0.0-0"
+  resolved "https://registry.yarnpkg.com/@nuxt/devalue/-/devalue-2.0.0-0.tgz#9962c3529b02e09a9ad18bf043f799ab2a1a2f78"
+  integrity sha512-G31bRzYODPGtMKNCpaAyjOqatHFCNEDoZuunMpxaGABMQT3kEaejx1vTp8pDW+g000HWRNsJL3MhQ9sDCDGjpA==
+
 "@opentelemetry/api-metrics@0.20.0":
   version "0.20.0"
   resolved "https://registry.yarnpkg.com/@opentelemetry/api-metrics/-/api-metrics-0.20.0.tgz#5c332cadfacd1fa966318292ba8dbb542f5ead57"
@@ -846,15 +834,6 @@
     "@opentelemetry/tracing" "0.20.0"
     jaeger-client "^3.15.0"
 
-"@opentelemetry/exporter-prometheus@^0.20.0":
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/@opentelemetry/exporter-prometheus/-/exporter-prometheus-0.20.0.tgz#ab4a1c48d357eb5ee1065a0e515aa470deb6d650"
-  integrity sha512-ZE0WbpnM7aChXRitgfwNEWRYkwylgWbMtiWRGtHupU9DculZZk7617gpddix0SmOc5PSQXMOhUMxe11gUN25nw==
-  dependencies:
-    "@opentelemetry/api-metrics" "0.20.0"
-    "@opentelemetry/core" "0.20.0"
-    "@opentelemetry/metrics" "0.20.0"
-
 "@opentelemetry/host-metrics@^0.21.0":
   version "0.21.0"
   resolved "https://registry.yarnpkg.com/@opentelemetry/host-metrics/-/host-metrics-0.21.0.tgz#44906c148b6f8321aa3bed3ad7d6c86e2b6f182a"
@@ -865,7 +844,7 @@
     "@opentelemetry/metrics" "^0.21.0"
     systeminformation "^5.0.0"
 
-"@opentelemetry/metrics@0.20.0", "@opentelemetry/metrics@^0.20.0":
+"@opentelemetry/metrics@^0.20.0":
   version "0.20.0"
   resolved "https://registry.yarnpkg.com/@opentelemetry/metrics/-/metrics-0.20.0.tgz#9f8b2652929a830513dc6949e2471f325c1e8dbd"
   integrity sha512-1jqtRvI+AdRIG+Up8njOgooOxa570uoWTKgokanllcCRp2gOOnkgLQ8YQhbArX0F4Xi2FHYe7o5vDO3J0Aj5kA==
@@ -2309,11 +2288,6 @@ code-point-at@^1.0.0:
   resolved "https://registry.yarnpkg.com/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
   integrity sha1-DQcLTQQ6W+ozovGkDi7bPZpMz3c=
 
-coffeescript@^2.0.0:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/coffeescript/-/coffeescript-2.5.1.tgz#b2442a1f2c806139669534a54adc35010559d16a"
-  integrity sha512-J2jRPX0eeFh5VKyVnoLrfVFgLZtnnmp96WQSLAS8OrLm2wtQLcnikYKe1gViJKDH7vucjuhHvBKKBP3rKcD1tQ==
-
 collapse-white-space@^1.0.2:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/collapse-white-space/-/collapse-white-space-1.0.6.tgz#e63629c0016665792060dbbeb79c42239d2c5287"
@@ -2472,11 +2446,6 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
   integrity sha1-PXz0Rk22RG6mRL9LOVB/mFEAjo4=
-
-console-log-level@^1.4.0:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/console-log-level/-/console-log-level-1.4.1.tgz#9c5a6bb9ef1ef65b05aba83028b0ff894cdf630a"
-  integrity sha512-VZzbIORbP+PPcN/gg3DXClTLPLg5Slwd5fL2MIc+o1qZ4BXBvWyc6QxPk6T/Mkr6IVjRpoAGf32XxP3ZWMVRcQ==
 
 content-disposition@0.5.3, content-disposition@^0.5.3:
   version "0.5.3"
@@ -3403,11 +3372,6 @@ find-root@^1.1.0:
   resolved "https://registry.yarnpkg.com/find-root/-/find-root-1.1.0.tgz#abcfc8ba76f708c42a97b3d685b7e9450bfb9ce4"
   integrity sha512-NKfW6bec6GfKc0SGx1e07QZY9PE99u0Bft/0rzSD5k3sO/vwkVUpDUKVm5Gpp5Ue3YfShPFTX2070tDs5kB9Ng==
 
-findit2@^2.2.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/findit2/-/findit2-2.2.3.tgz#58a466697df8a6205cdfdbf395536b8bd777a5f6"
-  integrity sha1-WKRmaX34piBc39vzlVNri9d3pfY=
-
 firebase-admin@^9.9.0:
   version "9.9.0"
   resolved "https://registry.yarnpkg.com/firebase-admin/-/firebase-admin-9.9.0.tgz#40442704b5ac0fddfdcdf4255601f8acb1e6fab3"
@@ -3644,7 +3608,7 @@ gaxios@^4.0.0:
     is-stream "^2.0.0"
     node-fetch "^2.3.0"
 
-gcp-metadata@^4.0.0, gcp-metadata@^4.2.0:
+gcp-metadata@^4.2.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/gcp-metadata/-/gcp-metadata-4.3.0.tgz#0423d06becdbfb9cbb8762eaacf14d5324997900"
   integrity sha512-L9XQUpvKJCM76YRSmcxrR4mFPzPGsgZUH+GgHMxAET8qc6+BhRJq63RLhWakgEO2KKVgeSDVfyiNjkGSADwNTA==
@@ -6881,13 +6845,6 @@ split2@^3.0.0, split2@^3.1.1:
   dependencies:
     readable-stream "^3.0.0"
 
-split@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/split/-/split-1.0.1.tgz#605bd9be303aa59fb35f9229fbea0ddec9ea07d9"
-  integrity sha512-mTyOoPbrivtXnwnIxZRFYRrPNtEFKlpB2fvjSnCQUiAA6qAZzqwna5envK4uk6OIeP17CsdF3rSBGYVBsU0Tkg==
-  dependencies:
-    through "2"
-
 sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
@@ -7286,7 +7243,7 @@ through2@^2.0.3:
     readable-stream "~2.3.6"
     xtend "~4.0.1"
 
-through@2, "through@>=2.2.7 <3", through@^2.3.6:
+"through@>=2.2.7 <3", through@^2.3.6:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
   integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
@@ -7808,10 +7765,10 @@ vite-plugin-mdx@3.5.6:
     resolve "^1.20.0"
     unified "^9.2.1"
 
-vite-plugin-ssr@0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/vite-plugin-ssr/-/vite-plugin-ssr-0.1.1.tgz#5d489e27a5a71d4349d537dc43db9823a89671fb"
-  integrity sha512-awWk/6xzts+d4bU7maEXkOPxO6fkPg0CVQsvn/+EHk7oFs27HIM+PShrnTN3PwhZ0VgSJBmGvjSq7Gu8kDuLag==
+vite-plugin-ssr@0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/vite-plugin-ssr/-/vite-plugin-ssr-0.1.2.tgz#87fac3340023b05c2e621686a070b8c60dca5713"
+  integrity sha512-Gg2YF1MpSIiNsJ146q2+MHX/J04RVDXBKljrMuCVi+bPaOC6N+axkKkv/HwLwTxpVu4iPeGdVnaIokWNQCko2A==
   dependencies:
     "@brillout/json-s" "^0.2.0"
     "@brillout/libassert" "^0.3.0"

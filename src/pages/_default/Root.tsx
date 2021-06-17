@@ -5,6 +5,7 @@ import createCache from '@emotion/cache'
 import theme from '../../theme'
 import components from './components'
 import Scripts from './Scripts'
+import Links from './Links'
 
 type RootProps = {
   children?: ReactNode
@@ -24,6 +25,7 @@ export default function Root({ children, ...pageProps }: RootProps) {
         <title>Superfly</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+        <Links />
       </head>
       <CacheProvider value={cache}>
         <ThemeProvider theme={theme} components={components}>

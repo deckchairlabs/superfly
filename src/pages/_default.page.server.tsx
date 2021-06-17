@@ -4,18 +4,20 @@ import { bundleMDX } from 'mdx-bundler'
 import React from 'react'
 import Root from './_default/Root'
 import mdxComponents from './_default/components'
-import { ServerContext } from '../context/Server'
+import { PageAsset, ServerContext } from '../context/Server'
 // import { firestore } from '../services/firebase'
 
 type RenderContext = {
   Page: React.ComponentType
-  pageId: string
   url: string
   isProduction: boolean
   pageProps: any
   pageExports: {
     links?: () => Promise<any>
   }
+  _pageId: string
+  _pageAssets: PageAsset[]
+  _pageContextClient: any
 }
 
 export async function render({
@@ -30,9 +32,10 @@ export async function render({
   return ReactDOMServer.renderToNodeStream(
     <ServerContext.Provider
       value={{
-        pageId: renderContext.pageId,
+        url: renderContext.url,
         isProduction: renderContext.isProduction,
-        pageProps,
+        pageAssets: renderContext._pageAssets,
+        pageContext: renderContext._pageContextClient,
       }}
     >
       <Root {...pageProps}>
@@ -54,19 +57,6 @@ type PageContext = {
 }
 
 export async function addPageContext(pageContext: PageContext) {
-  // const normalizedUrl = pageContext.urlNormalized.endsWith('/')
-  //   ? `${pageContext.urlNormalized}index`
-  //   : pageContext.urlNormalized
-
-  // const documentPath = normalizedUrl
-  //   .split('/')
-  //   .filter(Boolean)
-  //   .join('/children/')
-
-  // const documentReference = firestore.doc(`pages/${documentPath}`)
-  // const documentSnapshot = await documentReference.get()
-
-  // const data = documentSnapshot.data()
   let content: string = `<Box padding={[2, 3]}>
     <Heading>Hello World</Heading>
     <Box as="nav" paddingY={3}>
@@ -78,13 +68,8 @@ export async function addPageContext(pageContext: PageContext) {
     <Box>
       <strong>Last rendered:</strong> ${new Date().toUTCString()}
     </Box>
-    <Box><strong>Revision:</strong> ${pageContext.pageProps.revision}</Box>
   </Box>
 `
-
-  // if (data && documentSnapshot.exists) {
-  //   content = data.content
-  // }
 
   const result = await bundleMDX(content, {
     globals: {
@@ -95,7 +80,13 @@ export async function addPageContext(pageContext: PageContext) {
     },
   })
 
-  return { pageProps: { ...result, ...pageContext.pageProps } }
+  pageContext.pageProps = {
+    ...pageContext.pageProps,
+    code: result.code,
+    frontmatter: result.frontmatter,
+  }
+
+  return pageContext
 }
 
-export const passToClient = ['pageProps', 'documentProps']
+export const passToClient = ['url', 'pageProps', '_pageAssets']
