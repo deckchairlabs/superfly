@@ -54,7 +54,9 @@ const tracerProvider = new NodeTracerProvider({
 tracerProvider.register({
     contextManager: contextManager.enable(),
     propagator: tracePropagator,
-}).addSpanProcessor(spanProcessor);
+})
+
+tracerProvider.addSpanProcessor(spanProcessor);
 
 /**
  * Set the global tracer provider
