@@ -37,7 +37,7 @@ if (isProduction) {
     prefix: '/assets',
     immutable: true,
     cacheControl: true,
-    maxAge: '31536000'
+    maxAge: '1y'
   })
 } else {
   await app.register(middie)
