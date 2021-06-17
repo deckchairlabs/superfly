@@ -1,7 +1,6 @@
-import debugAgent from '@google-cloud/debug-agent'
-debugAgent.start({ serviceContext: { enableCanary: false }, javascriptFileExtensions: ['.js', '.mjs'] })
-
+import './trace.mjs'
 import fastify from 'fastify'
+import openTelemetry from '@autotelic/fastify-opentelemetry'
 import fastifyHelmet from 'fastify-helmet'
 import middie from 'middie'
 import compression from 'fastify-compress'
@@ -20,6 +19,8 @@ const app = fastify({
   http2: enableHttp2,
   logger: true
 })
+
+app.register(openTelemetry, { serviceName: service, wrapRoutes: true })
 
 app.register(fastifyHelmet, {
   contentSecurityPolicy: false

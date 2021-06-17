@@ -11,11 +11,17 @@
     "deploy:firebase": "firebase deploy --only=hosting"
   },
   "dependencies": {
+    "@autotelic/fastify-opentelemetry": "^0.13.0",
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.0",
     "@google-cloud/debug-agent": "^5.2.2",
+    "@google-cloud/opentelemetry-cloud-trace-exporter": "^0.9.0",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "@opentelemetry/api": "^0.20.0",
+    "@opentelemetry/core": "^0.20.0",
+    "@opentelemetry/node": "^0.20.0",
+    "@opentelemetry/tracing": "^0.20.0",
     "@theme-ui/components": "^0.9.1",
     "fastify": "^3.17.0",
     "fastify-compress": "^3.5.0",
