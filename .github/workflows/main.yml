@@ -19,3 +19,9 @@ jobs:
           SERVICE_HOSTNAME: deckchair-test.web.app
         with:
           filename: k6.js
+          flags: --out csv=load-test-results.gz
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: load-test-results
+          path: path/to/artifact/world.txt
