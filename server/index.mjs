@@ -1,5 +1,6 @@
 // import './trace.mjs'
 import fastify from 'fastify'
+import multistream from 'multistream'
 import openTelemetry from '@autotelic/fastify-opentelemetry'
 import fastifyHelmet from 'fastify-helmet'
 import middie from 'middie'
@@ -8,6 +9,7 @@ import fastifyStatic from 'fastify-static'
 import { createPageRender } from 'vite-plugin-ssr'
 import * as vite from 'vite'
 import env from './env.mjs'
+import { Stream } from 'stream'
 
 const isProduction = env.isProduction
 const enableHttp2 = process.env.HTTP2 === 'true'
@@ -35,7 +37,7 @@ if (isProduction) {
     prefix: '/assets',
     immutable: true,
     cacheControl: true,
-    maxAge: 31536000
+    maxAge: '31536000'
   })
 } else {
   await app.register(middie)
@@ -81,10 +83,15 @@ app.get('*', async (request, reply) => {
   if (result.nothingRendered) {
     reply.status(404).send(null)
   } else {
+    const html = new multistream([
+      Stream.Readable.from(['<!DOCTYPE html>']),
+      result.renderResult
+    ])
+
     reply
       .status(result.statusCode)
       .type('text/html')
-      .send(result.renderResult)
+      .send(html)
   }
 })
 
