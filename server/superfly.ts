@@ -1,12 +1,14 @@
-import { Request, Headers, Response } from 'node-fetch'
-import fp from 'fastify-plugin'
-import middie from 'middie'
-import fastifyStatic from 'fastify-static'
-import { createPageRender } from 'vite-plugin-ssr'
-import * as vite from 'vite'
 import { RouteHandlerMethod } from 'fastify'
-import Stream from 'stream'
+import fastifyHelmet from 'fastify-helmet'
+import fp from 'fastify-plugin'
+import fastifyStatic from 'fastify-static'
+import fastifyCompress from 'fastify-compress'
 import merge2 from 'merge2'
+import middie from 'middie'
+import { Headers, Request, Response } from 'node-fetch'
+import Stream from 'stream'
+import * as vite from 'vite'
+import { createPageRender } from 'vite-plugin-ssr'
 
 type SuperflyPluginOptions = {
   isProduction: boolean
@@ -44,6 +46,12 @@ export const superfly = fp<SuperflyPluginOptions>(async (fastify, options) => {
   const { isProduction, root = process.cwd() } = options
 
   let viteDevServer
+
+  await fastify.register(fastifyHelmet, {
+    contentSecurityPolicy: false,
+  })
+
+  await fastify.register(fastifyCompress)
 
   if (isProduction) {
     await fastify.register(fastifyStatic, {
@@ -98,7 +106,7 @@ export const superfly = fp<SuperflyPluginOptions>(async (fastify, options) => {
           const body = prependToStream([docType], response.body)
 
           reply
-            .status(response.status)
+            .status(renderResult.statusCode)
             .headers(Object.fromEntries(response.headers))
             .send(body)
         } else {

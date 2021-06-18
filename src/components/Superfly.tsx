@@ -16,7 +16,7 @@ export function SuperflyServer({ url, context }: SuperflyServerProps) {
       <SuperflyContext.Provider value={context}>
         <Routes>
           <Route path="/" element={<App />}>
-            <Route path="/" element={<div>Hello World</div>} />
+            <context.Page />
           </Route>
         </Routes>
       </SuperflyContext.Provider>
@@ -29,12 +29,13 @@ type SuperflyClientProps = {
 }
 
 export function SuperflyClient({ context }: SuperflyClientProps) {
+  console.log(context)
   return (
     <BrowserRouter>
       <SuperflyContext.Provider value={context}>
         <Routes>
           <Route path="/" element={<App />}>
-            <Route path="" element={<div>Hello World</div>} />
+            <context.Page />
           </Route>
         </Routes>
       </SuperflyContext.Provider>

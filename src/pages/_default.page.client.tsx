@@ -5,7 +5,6 @@ import { SuperflyClient } from '../components/Superfly'
 
 async function hydrate() {
   const pageContext = await getPage()
-  console.log(pageContext)
   //@ts-expect-error
   ReactDOM.hydrateRoot(document, <SuperflyClient context={pageContext} />)
 }
