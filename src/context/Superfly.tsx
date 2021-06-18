@@ -9,7 +9,18 @@ export type SuperflyContextValue = {
   _allPageIds?: string
   _pageContextClient?: any
   _pageAssets?: PageAsset[]
+  pageProps?: any
+  pageExports?: {
+    links?: () => Promise<any[]> | any[]
+    meta?: () => Promise<Meta> | Meta
+  }
   isProduction: boolean
+}
+
+type Meta = {
+  title?: string
+  description?: string
+  [x: string]: string | undefined
 }
 
 export type PageAsset = {
@@ -18,6 +29,9 @@ export type PageAsset = {
   mediaType: string
   preloadType: 'script' | 'style'
 }
+
+export type MetaResolver = () => Meta
+export type LinksResolver = () => React.LinkHTMLAttributes<HTMLLinkElement>[]
 
 export const SuperflyContext =
   React.createContext<SuperflyContextValue | null>(null)

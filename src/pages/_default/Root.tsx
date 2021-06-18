@@ -1,9 +1,9 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import Scripts from './Scripts'
-import Links from './Links'
-import Meta from './Meta'
-import LiveReload from './LiveReload'
+import Scripts from '../../components/Scripts'
+import Links from '../../components/Links'
+import Meta from '../../components/Meta'
+import LiveReload from '../../components/LiveReload'
 
 export default function App() {
   return (

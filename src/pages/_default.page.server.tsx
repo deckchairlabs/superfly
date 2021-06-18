@@ -7,7 +7,7 @@ import { SuperflyServer } from '../components/Superfly'
 
 type RenderContext = SuperflyContext & SuperflyContextValue
 
-export const render = async (context: RenderContext) => {
+export async function render(context: RenderContext) {
   const body = ReactDOMServer.renderToNodeStream(
     <SuperflyServer url={context.request.url} context={context} />
   )
@@ -30,4 +30,16 @@ export const render = async (context: RenderContext) => {
   })
 }
 
-export const passToClient = ['url', 'pageProps', '_pageAssets', '_allPageIds']
+export async function addPageContext({ pageExports }: SuperflyContextValue) {
+  const { meta: resolveMeta, links: resolveLinks } = pageExports || {}
+
+  const meta = (resolveMeta && (await resolveMeta())) || {}
+  const links = (resolveLinks && (await resolveLinks())) || []
+
+  return {
+    meta,
+    links,
+  }
+}
+
+export const passToClient = ['url', 'pageProps', 'meta', 'links']

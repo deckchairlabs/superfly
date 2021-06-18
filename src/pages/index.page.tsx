@@ -1,10 +1,11 @@
 import React from 'react'
+import { LinksResolver, MetaResolver } from '../context/Superfly'
 
-export const links = () => {
+export const links: LinksResolver = () => {
   return []
 }
 
-export function meta() {
+export const meta: MetaResolver = () => {
   return {
     title: 'Testing',
   }
