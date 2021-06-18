@@ -1,92 +1,33 @@
+import { Response } from 'node-fetch'
 import ReactDOMServer from 'react-dom/server'
-import { getMDXComponent } from 'mdx-bundler/client'
-import { bundleMDX } from 'mdx-bundler'
 import React from 'react'
-import Root from './_default/Root'
-import mdxComponents from './_default/components'
-import { PageAsset, ServerContext } from '../context/Server'
-// import { firestore } from '../services/firebase'
+import { SuperflyContext } from '../../server/superfly'
+import { SuperflyContextValue } from '../context/Superfly'
+import { SuperflyServer } from '../components/Superfly'
 
-type RenderContext = {
-  Page: React.ComponentType
-  url: string
-  isProduction: boolean
-  pageProps: any
-  pageExports: {
-    links?: () => Promise<any>
-  }
-  _pageId: string
-  _pageAssets: PageAsset[]
-  _pageContextClient: any
-}
+type RenderContext = SuperflyContext & SuperflyContextValue
 
-export async function render({
-  Page,
-  pageProps,
-  ...renderContext
-}: RenderContext) {
-  const Content = getMDXComponent(pageProps.code, {
-    JSX: await import('react/jsx-runtime'),
-  })
-
-  return ReactDOMServer.renderToNodeStream(
-    <ServerContext.Provider
-      value={{
-        url: renderContext.url,
-        isProduction: renderContext.isProduction,
-        pageAssets: renderContext._pageAssets,
-        pageContext: renderContext._pageContextClient,
-      }}
-    >
-      <Root {...pageProps}>
-        <Page
-          {...pageProps}
-          children={<Content components={mdxComponents} />}
-        />
-      </Root>
-    </ServerContext.Provider>
+export const render = async ({
+  request,
+  responseStatusCode,
+  responseHeaders,
+  ...context
+}: RenderContext) => {
+  const body = ReactDOMServer.renderToNodeStream(
+    <SuperflyServer url={request.url} context={context} />
   )
-}
 
-type PageContext = {
-  url: string
-  urlNormalized: string
-  urlPathname: string
-  isProduction: boolean
-  pageProps: any
-}
+  if (!context.isProduction) {
+    responseHeaders.set('Cache-Control', 'no-store')
+  }
 
-export async function addPageContext(pageContext: PageContext) {
-  let content: string = `<Box padding={[2, 3]}>
-    <Heading>Hello World</Heading>
-    <Box as="nav" paddingY={3}>
-      <NavLink href="/">Home</NavLink>
-      <NavLink href="/about">About</NavLink>
-      <NavLink href="/projects">Projects</NavLink>
-      <NavLink href="/contact">Contact</NavLink>
-    </Box>
-    <Box>
-      <strong>Last rendered:</strong> ${new Date().toUTCString()}
-    </Box>
-  </Box>
-`
-
-  const result = await bundleMDX(content, {
-    globals: {
-      'react/jsx-runtime': {
-        varName: 'JSX',
-        namedExports: ['Fragment', 'jsx', 'jsxs'],
-      },
+  return new Response(body, {
+    status: responseStatusCode,
+    headers: {
+      ...Object.fromEntries(responseHeaders),
+      'Content-Type': 'text/html',
     },
   })
-
-  pageContext.pageProps = {
-    ...pageContext.pageProps,
-    code: result.code,
-    frontmatter: result.frontmatter,
-  }
-
-  return pageContext
 }
 
-export const passToClient = ['url', 'pageProps', '_pageAssets']
+export const passToClient = ['url', 'pageProps', '_pageAssets', '_allPageIds']

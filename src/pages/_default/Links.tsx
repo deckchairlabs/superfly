@@ -1,11 +1,11 @@
 import React from 'react'
-import { useServerContext } from '../../context/Server'
+import { useSuperflyContext } from '../../context/Superfly'
 
 export default function Links() {
-  const { pageAssets } = useServerContext()
+  const { _pageAssets } = useSuperflyContext()
 
   const preloadScripts =
-    pageAssets?.filter((asset) => asset.preloadType === 'script') || []
+    _pageAssets?.filter((asset) => asset.preloadType === 'script') || []
 
   return (
     <React.Fragment>

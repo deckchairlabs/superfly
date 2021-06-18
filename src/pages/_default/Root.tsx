@@ -1,41 +1,22 @@
-import React, { ReactNode } from 'react'
-import { ThemeProvider } from 'theme-ui'
-import { CacheProvider } from '@emotion/react'
-import createCache from '@emotion/cache'
-import theme from '../../theme'
-import components from './components'
+import React from 'react'
+import { Outlet } from 'react-router-dom'
 import Scripts from './Scripts'
 import Links from './Links'
+import Meta from './Meta'
+import LiveReload from './LiveReload'
 
-type RootProps = {
-  children?: ReactNode
-  styleNonce?: string
-  scriptNonce?: string
-}
-
-export default function Root({ children, ...pageProps }: RootProps) {
-  const cache = createCache({
-    key: 'css',
-    nonce: pageProps.styleNonce,
-  })
-
+export default function App() {
   return (
     <html lang="en">
       <head>
-        <meta charSet="UTF-8" />
-        <title>Superfly</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+        <Meta />
         <Links />
       </head>
-      <CacheProvider value={cache}>
-        <ThemeProvider theme={theme} components={components}>
-          <body>
-            {children}
-            <Scripts />
-          </body>
-        </ThemeProvider>
-      </CacheProvider>
+      <body>
+        <Outlet />
+        {process.env.NODE_ENV === 'development' && <LiveReload />}
+        <Scripts />
+      </body>
     </html>
   )
 }
