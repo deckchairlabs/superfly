@@ -27,4 +27,4 @@ COPY --from=builder /app/package.json ./package.json
 
 USER app
 
-CMD ["node", "--experimental-json-modules", "./server/index.mjs"]
+CMD ["yarn", "start"]
