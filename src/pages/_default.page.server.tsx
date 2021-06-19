@@ -25,7 +25,7 @@ export async function render(context: RenderContext) {
     status: context.responseStatusCode,
     headers: {
       ...Object.fromEntries(context.responseHeaders),
-      'Content-Type': 'text/html',
+      'content-type': 'text/html',
     },
   })
 }

@@ -21,6 +21,7 @@ RUN addgroup -g 1001 -S nodejs
 RUN adduser -S app -u 1001
 
 COPY --from=builder --chown=app:nodejs /app/dist ./dist
+COPY --from=builder --chown=app:nodejs /app/prisma ./prisma
 COPY --from=builder --chown=app:nodejs /app/server ./server
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
