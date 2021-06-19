@@ -7,6 +7,8 @@ const port = process.env.PORT || 3000
 
 const main = async () => {
   const app = fastify({
+    //@ts-expect-error
+    http2: isProduction,
     logger: true,
   })
 
@@ -14,6 +16,7 @@ const main = async () => {
     isProduction,
   })
 
+  //@ts-expect-error
   app.get('*', app.createRenderHandler())
 
   await app.ready()

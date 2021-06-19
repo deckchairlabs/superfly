@@ -1,8 +1,8 @@
-import { RouteHandlerMethod } from 'fastify'
+import { RouteHandler } from 'fastify'
+import fastifyCompress from 'fastify-compress'
 import fastifyHelmet from 'fastify-helmet'
 import fp from 'fastify-plugin'
 import fastifyStatic from 'fastify-static'
-import fastifyCompress from 'fastify-compress'
 import merge2 from 'merge2'
 import middie from 'middie'
 import { Headers, Request, Response } from 'node-fetch'
@@ -35,7 +35,7 @@ declare module 'fastify' {
   interface FastifyInstance {
     createRenderHandler(
       superflyContext?: Partial<SuperflyContext>
-    ): RouteHandlerMethod
+    ): RouteHandler
   }
   interface FastifyRequest {
     superflyContext: SuperflyContext
@@ -88,7 +88,7 @@ export const superfly = fp<SuperflyPluginOptions>(async (fastify, options) => {
 
   fastify.decorate(
     'createRenderHandler',
-    (superflyContext?: Partial<SuperflyContext>): RouteHandlerMethod => {
+    (superflyContext?: Partial<SuperflyContext>): RouteHandler => {
       return async function handler(request, reply) {
         const renderResult = (await renderPage({
           ...request.superflyContext,
