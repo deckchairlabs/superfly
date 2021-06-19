@@ -13,7 +13,6 @@ export default function Scripts() {
   return (
     <React.Fragment>
       <script
-        suppressHydrationWarning
         dangerouslySetInnerHTML={{
           __html: `window.__vite_plugin_ssr__pageContext = ${devalue({
             _pageId,
@@ -25,7 +24,6 @@ export default function Scripts() {
       ></script>
       {pageScripts?.map((script, index) => (
         <script
-          suppressHydrationWarning
           key={`page-script-${index}`}
           defer
           type="module"

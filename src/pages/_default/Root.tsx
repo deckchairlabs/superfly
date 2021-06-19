@@ -1,11 +1,14 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import React, { ReactNode } from 'react'
 import Scripts from '../../components/Scripts'
 import Links from '../../components/Links'
 import Meta from '../../components/Meta'
 import LiveReload from '../../components/LiveReload'
 
-export default function App() {
+type AppProps = {
+  children?: ReactNode
+}
+
+export default function App({ children }: AppProps) {
   return (
     <html lang="en">
       <head>
@@ -13,7 +16,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        {children}
         {process.env.NODE_ENV === 'development' && <LiveReload />}
         <Scripts />
       </body>

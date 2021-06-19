@@ -13,6 +13,7 @@ export type SuperflyContextValue = {
   pageExports?: {
     links?: () => Promise<any[]> | any[]
     meta?: () => Promise<Meta> | Meta
+    loader?: () => Promise<any>
   }
   isProduction: boolean
 }
@@ -33,8 +34,7 @@ export type PageAsset = {
 export type MetaResolver = () => Meta
 export type LinksResolver = () => React.LinkHTMLAttributes<HTMLLinkElement>[]
 
-export const SuperflyContext =
-  React.createContext<SuperflyContextValue | null>(null)
+const SuperflyContext = React.createContext<SuperflyContextValue | null>(null)
 
 type SuperflyContextProviderProps = {
   value: SuperflyContextValue

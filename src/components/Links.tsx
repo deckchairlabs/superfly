@@ -20,7 +20,6 @@ export default function Links() {
           key={`script-preload-link-${index}`}
           rel="modulepreload"
           as="script"
-          type="text/javascript"
           href={script.src}
         />
       ))}

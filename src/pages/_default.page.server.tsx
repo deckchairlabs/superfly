@@ -31,14 +31,22 @@ export async function render(context: RenderContext) {
 }
 
 export async function addPageContext({ pageExports }: SuperflyContextValue) {
-  const { meta: resolveMeta, links: resolveLinks } = pageExports || {}
+  const {
+    meta: resolveMeta,
+    links: resolveLinks,
+    loader: resolveLoader,
+  } = pageExports || {}
 
   const meta = (resolveMeta && (await resolveMeta())) || {}
   const links = (resolveLinks && (await resolveLinks())) || []
+  const data = resolveLoader && (await resolveLoader())
 
   return {
     meta,
     links,
+    pageProps: {
+      data,
+    },
   }
 }
 
