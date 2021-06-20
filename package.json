@@ -7,7 +7,8 @@
     "build": "preconstruct build",
     "postinstall": "preconstruct dev && manypkg check",
     "version:bump": "yarn changeset add && changeset version --snapshot",
-    "release": "yarn preconstruct build && yarn changeset --tag experimental"
+    "prerelease": "yarn version:bump",
+    "release": "yarn preconstruct build && yarn changeset publish --access public --tag experimental"
   },
   "workspaces": [
     "example",
@@ -16,7 +17,8 @@
   "preconstruct": {
     "packages": [
       "packages/*",
-      "!packages/docs"
+      "!packages/docs",
+      "!example"
     ]
   },
   "dependencies": {

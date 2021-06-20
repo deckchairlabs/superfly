@@ -11,11 +11,11 @@ Superfly is an opinionated React framework similar to Next.js, which uses modern
 ## Getting Started
 
 ```sh
-npm install @deckchairlabs/superfly
+npm install @deckchairlabs/superfly@experimental
 
 # or
 
-yarn add @deckchairlabs/superfly
+yarn add @deckchairlabs/superfly@experimental
 ```
 
 Add the following to your projects `package.json`
