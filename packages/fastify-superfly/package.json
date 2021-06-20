@@ -1,0 +1,34 @@
+{
+  "name": "@flyweight/fastify-superfly",
+  "version": "0.1.0",
+  "source": "src/index.ts",
+  "main": "dist/flyweight-fastify-superfly.cjs.js",
+  "module": "dist/flyweight-fastify-superfly.esm.js",
+  "sideEffects": false,
+  "peerDependencies": {
+    "fastify": "^3.18.0",
+    "vite": "^2.3.8"
+  },
+  "devDependencies": {
+    "@types/merge2": "^1.3.0",
+    "@types/node-fetch": "^2.5.10",
+    "fastify": "^3.18.0",
+    "vite": "^2.3.8"
+  },
+  "dependencies": {
+    "@flyweight/vite-plugin-superfly": "*",
+    "fastify-compress": "^3.6.0",
+    "fastify-helmet": "^5.3.1",
+    "fastify-plugin": "^3.0.0",
+    "fastify-static": "^4.2.2",
+    "merge2": "^1.4.1",
+    "middie": "^5.2.0",
+    "node-fetch": "^2.6.1"
+  },
+  "preconstruct": {
+    "entrypoints": [
+      "index.ts",
+      "vite.ts"
+    ]
+  }
+}

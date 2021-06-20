@@ -1,60 +1,34 @@
 {
-  "name": "superfly",
+  "name": "@flyweight/superfly-monorepo",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "dev": "FIRESTORE_EMULATOR_HOST=localhost:8080 nodemon --watch \"server/**\" --ext \"mjs\" --exec \"node ./server/index.mjs | pino-colada\"",
-    "start": "node --experimental-json-modules ./server/index.mjs",
-    "build": "vite build && vite build --ssr",
-    "build:functions": "yarn --cwd functions run build",
-    "emulators": "firebase emulators:start",
-    "deploy": "yarn deploy:run && yarn deploy:firebase",
-    "deploy:run": "gcloud beta run deploy react-ssr --use-http2 --source=.",
-    "deploy:firebase": "firebase deploy --only=hosting"
+    "dev": "preconstruct dev && manypkg check",
+    "build": "preconstruct build",
+    "postinstall": "preconstruct dev && manypkg check",
+    "release": "yarn preconstruct build && yarn changeset publish"
+  },
+  "workspaces": [
+    "example",
+    "packages/*"
+  ],
+  "preconstruct": {
+    "packages": [
+      "packages/*",
+      "!packages/docs"
+    ]
   },
   "dependencies": {
-    "@autotelic/fastify-opentelemetry": "^0.13.0",
-    "@emotion/cache": "^11.4.0",
-    "@emotion/react": "^11.4.0",
-    "@google-cloud/opentelemetry-cloud-monitoring-exporter": "^0.9.0",
-    "@google-cloud/opentelemetry-cloud-trace-exporter": "^0.9.0",
-    "@mdx-js/mdx": "^1.6.22",
-    "@mdx-js/react": "^1.6.22",
-    "@nuxt/devalue": "^2.0.0-0",
-    "@opentelemetry/api": "^0.20.0",
-    "@opentelemetry/core": "^0.20.0",
-    "@opentelemetry/host-metrics": "^0.21.0",
-    "@opentelemetry/metrics": "^0.20.0",
-    "@opentelemetry/node": "^0.20.0",
-    "@opentelemetry/tracing": "^0.20.0",
-    "@theme-ui/components": "^0.9.1",
-    "fastify": "^3.17.0",
-    "fastify-compress": "^3.5.0",
-    "fastify-helmet": "^5.3.1",
-    "fastify-static": "^4.2.2",
-    "firebase-admin": "^9.9.0",
-    "helmet": "^4.6.0",
-    "mdx-bundler": "^4.1.0",
-    "middie": "^5.2.0",
-    "multistream": "^4.1.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "theme-ui": "^0.9.1",
-    "vite-plugin-ssr": "0.1.2",
-    "vite-plugin-virtual": "^0.1.1"
-  },
-  "devDependencies": {
-    "@opentelemetry/exporter-jaeger": "^0.20.0",
-    "@types/mdx-js__react": "^1.5.3",
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.5",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@changesets/cli": "^2.16.0",
+    "@manypkg/cli": "^0.18.0",
+    "@preconstruct/cli": "^2.1.0",
     "@types/node": "^15.12.1",
     "@types/react": "^17.0.9",
     "@types/react-dom": "^17.0.6",
-    "@vitejs/plugin-react-refresh": "^1.3.3",
-    "firebase-tools": "^9.12.1",
-    "nodemon": "^2.0.7",
-    "pino-colada": "^2.1.0",
-    "pino-pretty": "^5.0.2",
-    "typescript": "^4.3.2",
-    "vite": "^2.3.6",
-    "vite-plugin-mdx": "3.5.6",
-    "vite-react-jsx": "^1.1.1"
+    "typescript": "4"
   }
 }
