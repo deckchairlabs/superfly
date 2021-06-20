@@ -1,5 +1,5 @@
 import fastify from 'fastify'
-import superfly from '@flyweight/fastify-superfly'
+import superfly from '@deckchairlabs/fastify-superfly'
 
 type CreateServerOptions = {
   mode: 'production' | 'development'

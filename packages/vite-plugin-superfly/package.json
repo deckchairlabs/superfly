@@ -1,9 +1,9 @@
 {
-  "name": "@flyweight/vite-plugin-superfly",
+  "name": "@deckchairlabs/vite-plugin-superfly",
   "version": "0.1.0",
   "source": "src/index.ts",
-  "main": "dist/flyweight-vite-plugin-superfly.cjs.js",
-  "module": "dist/flyweight-vite-plugin-superfly.esm.js",
+  "main": "dist/deckchairlabs-vite-plugin-superfly.cjs.js",
+  "module": "dist/deckchairlabs-vite-plugin-superfly.esm.js",
   "sideEffects": false,
   "dependencies": {
     "@babel/core": "^7.14.6",

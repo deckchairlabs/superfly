@@ -1,4 +1,4 @@
 {
-  "main": "dist/flyweight-fastify-superfly-vite.cjs.js",
-  "module": "dist/flyweight-fastify-superfly-vite.esm.js"
+  "main": "dist/deckchairlabs-fastify-superfly-vite.cjs.js",
+  "module": "dist/deckchairlabs-fastify-superfly-vite.esm.js"
 }

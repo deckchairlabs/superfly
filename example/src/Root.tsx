@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { Meta, Links, LiveReload, Scripts } from '@flyweight/superfly'
+import { Meta, Links, LiveReload, Scripts } from '@deckchairlabs/superfly'
 
 type AppProps = {
   children?: ReactNode

@@ -1,9 +1,9 @@
 {
-  "name": "@flyweight/fastify-superfly",
+  "name": "@deckchairlabs/fastify-superfly",
   "version": "0.1.0",
   "source": "src/index.ts",
-  "main": "dist/flyweight-fastify-superfly.cjs.js",
-  "module": "dist/flyweight-fastify-superfly.esm.js",
+  "main": "dist/deckchairlabs-fastify-superfly.cjs.js",
+  "module": "dist/deckchairlabs-fastify-superfly.esm.js",
   "sideEffects": false,
   "peerDependencies": {
     "fastify": "^3.18.0",
@@ -16,7 +16,7 @@
     "vite": "^2.3.8"
   },
   "dependencies": {
-    "@flyweight/vite-plugin-superfly": "*",
+    "@deckchairlabs/vite-plugin-superfly": "*",
     "fastify-compress": "^3.6.0",
     "fastify-helmet": "^5.3.1",
     "fastify-plugin": "^3.0.0",

@@ -1,12 +1,12 @@
 {
-  "name": "@flyweight/superfly",
+  "name": "@deckchairlabs/superfly",
   "version": "0.1.0",
   "bin": {
-    "superfly": "./cli/flyweight-superfly-cli.cjs.js"
+    "superfly": "./cli/deckchairlabs-superfly-cli.cjs.js"
   },
   "source": "src/index.ts",
-  "main": "dist/flyweight-superfly.cjs.js",
-  "module": "dist/flyweight-superfly.esm.js",
+  "main": "dist/deckchairlabs-superfly.cjs.js",
+  "module": "dist/deckchairlabs-superfly.esm.js",
   "sideEffects": false,
   "devDependencies": {
     "@types/merge2": "^1.3.0",
@@ -18,7 +18,7 @@
     "react": "^17.0.2"
   },
   "dependencies": {
-    "@flyweight/fastify-superfly": "0.1.0",
+    "@deckchairlabs/fastify-superfly": "0.1.0",
     "fastify": "^3.18.0",
     "fastify-compress": "^3.6.0",
     "fastify-helmet": "^5.3.1",

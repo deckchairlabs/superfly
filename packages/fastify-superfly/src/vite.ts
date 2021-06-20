@@ -1,5 +1,5 @@
 import * as vite from 'vite'
-import superfly from '@flyweight/vite-plugin-superfly'
+import superfly from '@deckchairlabs/vite-plugin-superfly'
 
 export default async function createViteDevServer(root: string) {
   const config = createViteConfig(root)
