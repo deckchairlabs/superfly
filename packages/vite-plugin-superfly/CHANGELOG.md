@@ -1,5 +1,11 @@
 # @deckchairlabs/vite-plugin-superfly
 
+## 0.0.0-202152065451
+
+### Patch Changes
+
+- fixed cli
+
 ## 0.0.0-202152064317
 
 ### Patch Changes

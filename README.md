@@ -1,4 +1,4 @@
-# 🕺 Superfly (WIP)
+# 🕺 Superfly (experimental)
 
 **DO NOT USE THIS IN PRODUCTION, MILEAGE WILL VARY AND THERE WILL BE BUGS**
 

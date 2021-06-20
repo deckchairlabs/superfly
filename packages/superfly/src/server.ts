@@ -7,16 +7,17 @@ type CreateServerOptions = {
 }
 
 export default async function createServer({ mode }: CreateServerOptions) {
+  const isProduction = mode === 'production'
+
   const server = fastify({
-    logger: false
+    logger: isProduction
   })
 
   await server.register(superfly, {
-    isProduction: mode === 'production'
+    isProduction
   })
 
   server.get('*', server.createRenderHandler())
-
   await server.ready()
 
   return server
