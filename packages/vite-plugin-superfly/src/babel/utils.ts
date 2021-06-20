@@ -6,11 +6,11 @@ export function programHasExportedIdentifier(program: t.Program, name: string) {
       if (isServerOnlyDeclaration(statement.declaration)) {
         if (t.isVariableDeclaration(statement.declaration)) {
           return someDeclarationIsIdentifierWithName(
-            'links',
+            name,
             statement.declaration.declarations
           )
         } else {
-          return isIdentifierWithName('links', statement.declaration.id)
+          return isIdentifierWithName(name, statement.declaration.id)
         }
       }
     }

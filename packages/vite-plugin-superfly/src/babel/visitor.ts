@@ -7,11 +7,11 @@ export const visitor: Visitor = {
   Program: {
     enter(program) {
       const buildSuperflyExport = template.statement(`
-            export const __superfly = {
-              hasLoader: %%hasLoader%%,
-              hasLinks: %%hasLinks%%
-            }
-          `)
+        export const __superfly = {
+          hasLoader: %%hasLoader%%,
+          hasLinks: %%hasLinks%%
+        }
+      `)
 
       const hasLoader = programHasExportedIdentifier(program.node, 'loader')
       const hasLinks = programHasExportedIdentifier(program.node, 'links')
@@ -31,6 +31,10 @@ export const visitor: Visitor = {
   ExportNamedDeclaration: {
     exit(declaration) {
       if (isServerOnlyDeclaration(declaration.node.declaration)) {
+        /**
+         * TODO: Use the logger instance from vite to show which exports have
+         * been removed from the page.
+         */
         // logger?.info('Removing server side only declaration')
 
         declaration.remove()
