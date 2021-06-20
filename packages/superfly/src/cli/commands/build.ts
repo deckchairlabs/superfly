@@ -1,4 +1,4 @@
-import { createViteConfig } from '@flyweight/fastify-superfly/vite'
+import { createViteConfig } from '@deckchairlabs/fastify-superfly/vite'
 import { Handler } from 'sade'
 import * as vite from 'vite'
 

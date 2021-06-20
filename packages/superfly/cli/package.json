@@ -1,4 +1,4 @@
 {
-  "main": "dist/flyweight-superfly-cli.cjs.js",
-  "module": "dist/flyweight-superfly-cli.esm.js"
+  "main": "dist/deckchairlabs-superfly-cli.cjs.js",
+  "module": "dist/deckchairlabs-superfly-cli.esm.js"
 }

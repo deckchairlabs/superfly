@@ -5,7 +5,7 @@ import fp from 'fastify-plugin'
 import fastifyStatic from 'fastify-static'
 import middie from 'middie'
 import { Headers, Request, Response } from 'node-fetch'
-import { createRenderer } from '@flyweight/vite-plugin-superfly'
+import { createRenderer } from '@deckchairlabs/vite-plugin-superfly'
 import { prependToStream } from './stream'
 import createViteDevServer from './vite'
 
