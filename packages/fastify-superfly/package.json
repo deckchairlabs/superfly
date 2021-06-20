@@ -1,6 +1,6 @@
 {
   "name": "@deckchairlabs/fastify-superfly",
-  "version": "0.0.0-202152062435",
+  "version": "0.0.0-202152064317",
   "source": "src/index.ts",
   "main": "dist/deckchairlabs-fastify-superfly.cjs.js",
   "module": "dist/deckchairlabs-fastify-superfly.esm.js",
@@ -16,7 +16,7 @@
     "vite": "^2.3.8"
   },
   "dependencies": {
-    "@deckchairlabs/vite-plugin-superfly": "0.0.0-202152062435",
+    "@deckchairlabs/vite-plugin-superfly": "0.0.0-202152064317",
     "fastify-compress": "^3.6.0",
     "fastify-helmet": "^5.3.1",
     "fastify-plugin": "^3.0.0",
