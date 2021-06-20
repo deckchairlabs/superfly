@@ -5,7 +5,7 @@ import fp from 'fastify-plugin'
 import fastifyStatic from 'fastify-static'
 import middie from 'middie'
 import { Headers, Request, Response } from 'node-fetch'
-import { createPageRender } from 'vite-plugin-ssr'
+import { createRenderer } from '@flyweight/vite-plugin-superfly'
 import { prependToStream } from './stream'
 import createViteDevServer from './vite'
 
@@ -66,7 +66,7 @@ const superfly = fp<SuperflyPluginOptions>(async (fastify, options) => {
     fastify.use(viteDevServer.middlewares)
   }
 
-  const renderPage = createPageRender({ viteDevServer, isProduction, root })
+  const renderPage = createRenderer({ viteDevServer, isProduction, root })
 
   fastify.addHook('preHandler', (request, _reply, done) => {
     request.superflyContext = {

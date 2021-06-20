@@ -6,7 +6,7 @@ import start from './cli/commands/start'
 
 const program = sade('superfly')
 
-program.version('1.0.0')
+program.version('0.0.0')
 
 program
   .command('dev')

@@ -1,7 +1,4 @@
 import * as vite from 'vite'
-import reactRefresh from '@vitejs/plugin-react-refresh'
-import ssr from 'vite-plugin-ssr/plugin'
-import reactJsx from 'vite-react-jsx'
 import superfly from '@flyweight/vite-plugin-superfly'
 
 export default async function createViteDevServer(root: string) {
@@ -18,7 +15,7 @@ export function createViteConfig(
   return {
     root,
     configFile: false,
-    plugins: [reactRefresh(), reactJsx(), superfly(), ssr()],
+    plugins: [superfly()],
     server: { middlewareMode: true },
     clearScreen: false,
     build: {
