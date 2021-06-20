@@ -1,16 +1,14 @@
 {
   "compilerOptions": {
+    "incremental": true,
     "strict": true,
     "module": "CommonJS",
     "target": "ES2019",
-    "checkJs": true,
     "lib": ["DOM", "ES2019"],
     "jsx": "react",
     "skipLibCheck": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "isolatedModules": true
   },
-  "ts-node": {
-    "transpileOnly": true
-  },
-  "exclude": ["dist", "node_modules", "functions", "k6.js"]
+  "exclude": ["node_modules"]
 }

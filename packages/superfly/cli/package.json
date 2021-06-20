@@ -1,0 +1,4 @@
+{
+  "main": "dist/flyweight-superfly-cli.cjs.js",
+  "module": "dist/flyweight-superfly-cli.esm.js"
+}

@@ -1,0 +1,4 @@
+{
+  "main": "dist/flyweight-fastify-superfly-vite.cjs.js",
+  "module": "dist/flyweight-fastify-superfly-vite.esm.js"
+}
