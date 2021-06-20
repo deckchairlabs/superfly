@@ -1,5 +1,11 @@
 # @deckchairlabs/vite-plugin-superfly
 
+## 0.0.0-202152071054
+
+### Patch Changes
+
+- fixed the named export identification
+
 ## 0.0.0-202152065451
 
 ### Patch Changes

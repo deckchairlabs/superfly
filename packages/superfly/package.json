@@ -1,6 +1,6 @@
 {
   "name": "@deckchairlabs/superfly",
-  "version": "0.0.0-202152065451",
+  "version": "0.0.0-202152071054",
   "bin": {
     "superfly": "./bin.js"
   },
@@ -18,7 +18,7 @@
     "react": "^17.0.2"
   },
   "dependencies": {
-    "@deckchairlabs/fastify-superfly": "0.0.0-202152065451",
+    "@deckchairlabs/fastify-superfly": "0.0.0-202152071054",
     "fastify": "^3.18.0",
     "fastify-compress": "^3.6.0",
     "fastify-helmet": "^5.3.1",

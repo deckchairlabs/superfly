@@ -1,5 +1,12 @@
 # @deckchairlabs/fastify-superfly
 
+## 0.0.0-202152071054
+
+### Patch Changes
+
+- Updated dependencies [undefined]
+  - @deckchairlabs/vite-plugin-superfly@0.0.0-202152071054
+
 ## 0.0.0-202152065451
 
 ### Patch Changes
