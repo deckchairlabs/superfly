@@ -1,10 +1,6 @@
 # 🕺 Superfly (WIP)
 
-<center>
-  <strong>
-    DO NOT USE THIS IN PRODUCTION, MILAGE WILL VARY AND THERE WILL BE BUGS
-  </strong>
-</center>
+**DO NOT USE THIS IN PRODUCTION, MILAGE WILL VARY AND THERE WILL BE BUGS**
 
 <hr />
 
