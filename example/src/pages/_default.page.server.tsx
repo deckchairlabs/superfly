@@ -6,7 +6,7 @@ import Root from '../Root'
 export async function render(context: any) {
   const body = ReactDOMServer.renderToNodeStream(
     <Root>
-      <div>Hello World</div>
+      <context.Page />
     </Root>
   )
 

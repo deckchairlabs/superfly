@@ -1,6 +1,7 @@
 {
   "name": "@flyweight/superfly-example",
   "version": "0.1.0",
+  "private": true,
   "scripts": {
     "dev": "node ../packages/superfly/cli dev",
     "build": "node ../packages/superfly/cli build",
