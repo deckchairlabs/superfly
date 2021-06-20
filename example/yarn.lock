@@ -269,12 +269,12 @@
   dependencies:
     path-to-regexp "^1.7.0"
 
-"@deckchairlabs/fastify-superfly@0.0.0-202152062435":
-  version "0.0.0-202152062435"
-  resolved "https://registry.yarnpkg.com/@deckchairlabs/fastify-superfly/-/fastify-superfly-0.0.0-202152062435.tgz#70a0165ffd1c8af7b610f4bace191b714054a679"
-  integrity sha512-nNwS8SHviisehPDkIEBTBg/NzKnXPyL/qEbkU3Te76ptClbsS8DW7dTk6TvBhXXCn83R6ZB+78KqNxuEw1Fq0Q==
+"@deckchairlabs/fastify-superfly@0.0.0-202152064317":
+  version "0.0.0-202152064317"
+  resolved "https://registry.yarnpkg.com/@deckchairlabs/fastify-superfly/-/fastify-superfly-0.0.0-202152064317.tgz#2d33f3e55811a88e3cb17c65bb29c9d9ba50b937"
+  integrity sha512-OrV5JsQgoifFuieCal8v2geLSeMy4pspInIAwFmUNyIeXPvE+vK8KIRfFJ591sV4DyNnDy/A1Yh8N4xsK16Sjw==
   dependencies:
-    "@deckchairlabs/vite-plugin-superfly" "0.0.0-202152062435"
+    "@deckchairlabs/vite-plugin-superfly" "0.0.0-202152064317"
     fastify-compress "^3.6.0"
     fastify-helmet "^5.3.1"
     fastify-plugin "^3.0.0"
@@ -283,12 +283,12 @@
     middie "^5.2.0"
     node-fetch "^2.6.1"
 
-"@deckchairlabs/superfly@0.0.0-202152062435":
-  version "0.0.0-202152062435"
-  resolved "https://registry.yarnpkg.com/@deckchairlabs/superfly/-/superfly-0.0.0-202152062435.tgz#e68ae880ab3b1f85c026b65b09c31a3598703af5"
-  integrity sha512-cRLOjk9eixgOXB8Dj4sI9Dqv5NrDjur/fWQV94PXhyB7mvoB6n6lv6+7Rfs7cJ6ORcrh4oFlj14X/KrMxA1kOA==
+"@deckchairlabs/superfly@0.0.0-202152064317":
+  version "0.0.0-202152064317"
+  resolved "https://registry.yarnpkg.com/@deckchairlabs/superfly/-/superfly-0.0.0-202152064317.tgz#16d9ef91bec55337359c54614ffd21b02c5f10df"
+  integrity sha512-b2vZ6WbuKCCFZlzWLBz2EznKjykhx96vlKno34Nwn2+SKPq4w3KWRe1rvtrH3CAFpnbyP85YF3LVZCDDyaSicQ==
   dependencies:
-    "@deckchairlabs/fastify-superfly" "0.0.0-202152062435"
+    "@deckchairlabs/fastify-superfly" "0.0.0-202152064317"
     fastify "^3.18.0"
     fastify-compress "^3.6.0"
     fastify-helmet "^5.3.1"
@@ -302,10 +302,10 @@
     vite "^2.3.8"
     vite-plugin-ssr "^0.1.2"
 
-"@deckchairlabs/vite-plugin-superfly@0.0.0-202152062435":
-  version "0.0.0-202152062435"
-  resolved "https://registry.yarnpkg.com/@deckchairlabs/vite-plugin-superfly/-/vite-plugin-superfly-0.0.0-202152062435.tgz#5de164aca3d2da29bd1f3599dc1c9a4792bbf60c"
-  integrity sha512-+K9cbMwN9Pg2A+d9u9odQgif9Z3qb6Z3Z4r3hrPyYTLrVKCYgnwc3Q7hXKAYVWPlUxFbA1pA/JErOgv3g8JI9g==
+"@deckchairlabs/vite-plugin-superfly@0.0.0-202152064317":
+  version "0.0.0-202152064317"
+  resolved "https://registry.yarnpkg.com/@deckchairlabs/vite-plugin-superfly/-/vite-plugin-superfly-0.0.0-202152064317.tgz#7ccbedbea642b10c5d55204f250f3f06c9b2da03"
+  integrity sha512-IEy/iLZeyUECWjXs9iung5Rtz4wroeC2bkHeCaXdn9OT2YuQNOb5xaswCy/rN7x46eDUolyXphQlGrHQHfXjYg==
   dependencies:
     "@babel/core" "^7.14.6"
     "@babel/plugin-transform-react-jsx-self" "^7.14.5"

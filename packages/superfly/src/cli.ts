@@ -1,4 +1,3 @@
-// #!/usr/bin/env node
 import sade from 'sade'
 import build from './cli/commands/build'
 import dev from './cli/commands/dev'

@@ -2,7 +2,7 @@
   "name": "@deckchairlabs/superfly",
   "version": "0.0.0-202152064317",
   "bin": {
-    "superfly": "./cli/deckchairlabs-superfly-cli.cjs.js"
+    "superfly": "./bin.js"
   },
   "source": "src/index.ts",
   "main": "dist/deckchairlabs-superfly.cjs.js",
@@ -29,6 +29,7 @@
     "node-fetch": "^2.6.1",
     "pino-pretty": "^5.0.2",
     "sade": "^1.7.4",
+    "v8-compile-cache": "^2.3.0",
     "vite": "^2.3.8",
     "vite-plugin-ssr": "^0.1.2"
   },
