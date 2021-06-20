@@ -6,7 +6,7 @@
 
 _Inspired by [Remix](https://remix.run/) and the wonderful plugin [vite-plugin-ssr](https://github.com/brillout/vite-plugin-ssr)_
 
-Superfly is an opinionated React framework similar to Next.js, but which uses modern frameworks, practices and tooling!
+Superfly is an opinionated React framework similar to Next.js, which uses modern frameworks, practices and tooling!
 
 ## Getting Started
 
