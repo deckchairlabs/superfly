@@ -6,9 +6,9 @@
     "dev": "preconstruct dev && manypkg check",
     "build": "preconstruct build",
     "postinstall": "preconstruct dev && manypkg check",
-    "version:bump": "yarn changeset add && changeset version --snapshot",
+    "version:bump": "changeset add && changeset version --snapshot",
     "prerelease": "yarn version:bump",
-    "release": "yarn build && yarn changeset publish --access public --tag experimental"
+    "release": "yarn build && changeset publish --tag experimental"
   },
   "workspaces": [
     "packages/*"
