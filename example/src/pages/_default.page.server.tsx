@@ -1,9 +1,9 @@
-import { Response } from 'node-fetch'
-import ReactDOMServer from 'react-dom/server'
+import { RenderResolver, Response } from '@deckchairlabs/superfly'
 import React from 'react'
+import ReactDOMServer from 'react-dom/server'
 import Root from '../Root'
 
-export async function render(context: any) {
+export const render: RenderResolver = (context: any) => {
   const body = ReactDOMServer.renderToNodeStream(
     <Root>
       <context.Page />
