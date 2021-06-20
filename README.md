@@ -29,3 +29,15 @@ Add the following to your projects `package.json`
   }
 }
 ```
+
+### Configuration
+TODO
+
+### Meta tags
+TODO
+
+### Link tags
+TODO
+
+### Server side data fetching
+TODO
