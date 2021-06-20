@@ -1,3 +1,3 @@
-export * from './components'
-export * from './types'
-export * from './fetch'
+export * from '../src/components'
+export * from '../src/types'
+export * from '../src/fetch'
