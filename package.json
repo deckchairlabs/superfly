@@ -1,12 +1,13 @@
 {
   "name": "@deckchairlabs/superfly-monorepo",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "preconstruct dev && manypkg check",
     "build": "preconstruct build",
     "postinstall": "preconstruct dev && manypkg check",
-    "release": "yarn preconstruct build && yarn changeset publish"
+    "version:bump": "yarn changeset add && changeset version --snapshot",
+    "release": "yarn preconstruct build && yarn changeset --tag experimental"
   },
   "workspaces": [
     "example",

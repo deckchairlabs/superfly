@@ -1,6 +1,6 @@
 {
   "name": "@deckchairlabs/superfly-example",
-  "version": "0.1.0",
+  "version": "0.0.0-202152062435",
   "private": true,
   "scripts": {
     "dev": "node ../packages/superfly/cli dev",
@@ -8,7 +8,7 @@
     "start": "node ../packages/superfly/cli start"
   },
   "dependencies": {
-    "@deckchairlabs/superfly": "0.1.0",
+    "@deckchairlabs/superfly": "0.0.0-202152062435",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.0.0-beta.0"

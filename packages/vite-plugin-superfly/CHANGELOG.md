@@ -1,7 +1,7 @@
 # @deckchairlabs/vite-plugin-superfly
 
-## 0.1.0
+## 0.0.0-202152062435
 
-### Minor Changes
+### Patch Changes
 
-- initial
+- experimental release

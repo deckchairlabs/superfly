@@ -1,6 +1,6 @@
 {
   "name": "@deckchairlabs/vite-plugin-superfly",
-  "version": "0.1.0",
+  "version": "0.0.0-202152062435",
   "source": "src/index.ts",
   "main": "dist/deckchairlabs-vite-plugin-superfly.cjs.js",
   "module": "dist/deckchairlabs-vite-plugin-superfly.esm.js",
