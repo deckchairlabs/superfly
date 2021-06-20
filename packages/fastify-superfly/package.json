@@ -16,7 +16,7 @@
     "vite": "^2.3.8"
   },
   "dependencies": {
-    "@deckchairlabs/vite-plugin-superfly": "*",
+    "@deckchairlabs/vite-plugin-superfly": "0.0.0-202152062435",
     "fastify-compress": "^3.6.0",
     "fastify-helmet": "^5.3.1",
     "fastify-plugin": "^3.0.0",
