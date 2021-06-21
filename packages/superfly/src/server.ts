@@ -1,16 +1,23 @@
 import superfly, {
   SuperflyRendererFactory
 } from '@deckchairlabs/fastify-superfly'
-import { createRenderer } from '@deckchairlabs/vite-plugin-superfly'
+import {
+  createRenderer,
+  createViteConfig
+} from '@deckchairlabs/vite-plugin-superfly'
 import fastify from 'fastify'
 import pino from 'pino'
 
 type CreateServerOptions = {
+  root: string
   mode: 'production' | 'development'
   http2?: boolean
 }
 
-export default async function createServer({ mode }: CreateServerOptions) {
+export default async function createServer({
+  root,
+  mode
+}: CreateServerOptions) {
   const isProduction = mode === 'production'
 
   const logger = pino({
@@ -23,7 +30,9 @@ export default async function createServer({ mode }: CreateServerOptions) {
   })
 
   await server.register(superfly, {
+    root,
     isProduction,
+    devServerConfig: createViteConfig(root),
     createRenderer: createRenderer as SuperflyRendererFactory
   })
 

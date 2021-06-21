@@ -1,4 +1,4 @@
-import { Plugin, ViteDevServer } from 'vite'
+import { InlineConfig, Plugin, ViteDevServer } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import ssr from 'vite-plugin-ssr/plugin'
 import { createPageRender } from 'vite-plugin-ssr'
@@ -17,4 +17,19 @@ type CreateRendererOptions = {
 
 export function createRenderer(options: CreateRendererOptions) {
   return createPageRender(options)
+}
+
+export function createViteConfig(root: string, isSSR?: boolean): InlineConfig {
+  return {
+    root,
+    configFile: false,
+    plugins: [plugin()],
+    server: { middlewareMode: true },
+    clearScreen: false,
+    build: {
+      ssr: isSSR,
+      sourcemap: true,
+      minify: 'esbuild'
+    }
+  }
 }

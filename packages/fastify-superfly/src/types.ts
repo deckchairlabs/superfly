@@ -2,12 +2,13 @@ import { FastifyCompressOptions } from 'fastify-compress'
 import { FastifyStaticOptions } from 'fastify-static'
 import { Headers, Request, Response } from 'node-fetch'
 import React from 'react'
-import { ViteDevServer } from 'vite'
+import { InlineConfig, ViteDevServer } from 'vite'
 
 export type SuperflyPluginOptions = {
   createRenderer: SuperflyRendererFactory
   isProduction: boolean
   root?: string
+  devServerConfig?: InlineConfig
   compress?: FastifyCompressOptions
   assets?: FastifyStaticOptions
 }
