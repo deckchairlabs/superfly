@@ -33,6 +33,14 @@ Add the following to your projects `package.json`
 ### Configuration
 TODO
 
+```js
+module.exports = {}
+```
+
+### Plugin API
+TODO
+Borrow from vite/fastify, or just expose their plugin APIs.
+
 ### Meta tags
 TODO
 
