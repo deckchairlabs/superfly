@@ -1,7 +1,8 @@
-import { ViteDevServer } from 'vite'
-import { Headers, Request, Response } from 'node-fetch'
 import { FastifyCompressOptions } from 'fastify-compress'
 import { FastifyStaticOptions } from 'fastify-static'
+import { Headers, Request, Response } from 'node-fetch'
+import React from 'react'
+import { ViteDevServer } from 'vite'
 
 export type SuperflyPluginOptions = {
   createRenderer: SuperflyRendererFactory
@@ -33,6 +34,10 @@ export type SuperflyContext = {
   responseStatusCode: number
   responseHeaders: Headers
 }
+
+export type SuperflyRenderContext = {
+  Page: React.ComponentType<{}>
+} & SuperflyContext
 
 export type SuperflyRendererResult<TResult = Response> =
   | { nothingRendered: true; renderResult: undefined; statusCode: undefined }

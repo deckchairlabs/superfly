@@ -11,7 +11,7 @@ export default function ErrorPage({ is404 }: { is404: boolean }) {
   } else {
     return (
       <>
-        <h1>500 Internal Server Error</h1>
+        <h1>Error</h1>
         Something went wrong.
       </>
     )
