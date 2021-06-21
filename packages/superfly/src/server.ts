@@ -14,10 +14,7 @@ type CreateServerOptions = {
   http2?: boolean
 }
 
-export default async function createServer({
-  root,
-  mode
-}: CreateServerOptions) {
+export async function createServer({ root, mode }: CreateServerOptions) {
   const isProduction = mode === 'production'
 
   const server = fastify({

@@ -1,5 +1,12 @@
 import { Response } from 'node-fetch'
 import { SuperflyRenderContext } from '@deckchairlabs/fastify-superfly'
+import { InlineConfig } from 'vite'
+import { FastifyServerOptions } from 'fastify'
+
+export type ResolvedConfig = {
+  fastify?: FastifyServerOptions
+  vite?: InlineConfig
+}
 
 export type RenderFunction = (context: SuperflyRenderContext) => Response
 

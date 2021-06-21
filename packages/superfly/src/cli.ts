@@ -1,9 +1,9 @@
-import sade, { Handler } from 'sade'
 import path from 'path'
+import sade, { Handler } from 'sade'
 import build from './cli/commands/build'
 import dev from './cli/commands/dev'
 import start from './cli/commands/start'
-import { resolveConfig } from './config'
+import { resolveConfig, validateConfig } from './config'
 
 export type GlobalArgs = {
   config?: string
@@ -42,8 +42,9 @@ function handlerWithConfig(handler: Handler) {
     )
 
     const resolvedConfig = resolvedConfigResult?.config
+    const validConfig = await validateConfig(resolvedConfig || {})
 
-    return handler(args, resolvedConfig)
+    return handler(args, validConfig)
   }
 
   return wrappedHandler
