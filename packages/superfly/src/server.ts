@@ -1,5 +1,8 @@
+import superfly, {
+  SuperflyRendererFactory
+} from '@deckchairlabs/fastify-superfly'
+import { createRenderer } from '@deckchairlabs/vite-plugin-superfly'
 import fastify from 'fastify'
-import superfly from '@deckchairlabs/fastify-superfly'
 
 type CreateServerOptions = {
   mode: 'production' | 'development'
@@ -14,7 +17,8 @@ export default async function createServer({ mode }: CreateServerOptions) {
   })
 
   await server.register(superfly, {
-    isProduction
+    isProduction,
+    createRenderer: createRenderer as SuperflyRendererFactory
   })
 
   server.get('*', server.createRenderHandler())
