@@ -1,15 +1,8 @@
 import { Handler } from 'sade'
-import createServer from '../../server'
+import createServer from './createServer'
 
 const dev: Handler = async () => {
-  const port = process.env.PORT || 3000
-  const host = '0.0.0.0'
-
-  const server = await createServer({
-    mode: 'development'
-  })
-
-  return server.listen(port, host)
+  return createServer(process.cwd(), 'development')
 }
 
 export default dev
