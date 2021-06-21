@@ -283,7 +283,7 @@
     middie "^5.2.0"
     node-fetch "^2.6.1"
 
-"@deckchairlabs/superfly@../packages/superfly":
+"@deckchairlabs/superfly@file:../packages/superfly":
   version "0.0.0-202152071054"
   dependencies:
     "@deckchairlabs/fastify-superfly" "0.0.0-202152071054"
