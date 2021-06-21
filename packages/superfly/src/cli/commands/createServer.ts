@@ -1,12 +1,18 @@
 import createServer from '../../server'
 
-export default async function(
-  root: string,
+type CreateServerOptions = {
+  root: string
   mode: 'production' | 'development'
-) {
-  const port = process.env.PORT || 3000
-  const host = 'localhost'
+  port: number
+  host?: string
+}
 
+export default async function({
+  root,
+  mode,
+  port,
+  host = 'localhost'
+}: CreateServerOptions) {
   const server = await createServer({
     root,
     mode

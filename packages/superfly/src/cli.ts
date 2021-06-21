@@ -1,36 +1,56 @@
 import sade, { Handler } from 'sade'
+import path from 'path'
 import build from './cli/commands/build'
 import dev from './cli/commands/dev'
 import start from './cli/commands/start'
-import { loadConfig } from './config'
+import { resolveConfig } from './config'
+
+export type GlobalArgs = {
+  config?: string
+}
 
 const program = sade('superfly')
+const defaultPort = process.env.PORT || 3000
 
-program.version('0.0.0')
+program
+  .version('0.0.0')
+  .option('-c, --config', 'Provide path to custom config.')
 
 program
   .command('dev')
-  .describe('Start the development server.')
-  .action(withConfig(dev))
+  .describe('Start development server.')
+  .option('-p, --port', 'The port to listen on.', defaultPort)
+  .action(handlerWithConfig(dev))
 
 program
   .command('build')
-  .describe('Build the project for production ready deployment.')
-  .option('--sourcemaps', 'Output sourcemaps.', false)
-  .action(withConfig(build))
+  .describe('Build project for production ready deployment.')
+  .action(handlerWithConfig(build))
 
 program
   .command('start')
-  .describe('Start the production server.')
-  .action(withConfig(start))
+  .describe('Start production server.')
+  .option('-p, --port', 'The port to listen on.', defaultPort)
+  .action(handlerWithConfig(start))
 
-function withConfig(handler: Handler) {
-  const wrappedHandler: Handler = async args => {
-    const config = await loadConfig()
-    return handler(config)
+function handlerWithConfig(handler: Handler) {
+  const wrappedHandler: Handler = async ({ config, ...args }: GlobalArgs) => {
+    const configFilepath = config && path.resolve(process.cwd(), config)
+    const resolvedConfigResult = await resolveConfig(
+      process.cwd(),
+      configFilepath
+    )
+
+    const resolvedConfig = resolvedConfigResult?.config
+
+    return handler(args, resolvedConfig)
   }
 
   return wrappedHandler
 }
 
-program.parse(process.argv)
+program.parse(process.argv, {
+  unknown(flag: string) {
+    console.error(`Unknown flag provided: ${flag}`)
+  }
+})

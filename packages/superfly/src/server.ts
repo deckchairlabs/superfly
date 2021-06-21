@@ -6,7 +6,7 @@ import {
   createViteConfig
 } from '@deckchairlabs/vite-plugin-superfly'
 import fastify from 'fastify'
-import pino from 'pino'
+import { logger } from './logger'
 
 type CreateServerOptions = {
   root: string
@@ -20,13 +20,8 @@ export default async function createServer({
 }: CreateServerOptions) {
   const isProduction = mode === 'production'
 
-  const logger = pino({
-    prettyPrint: !isProduction,
-    prettifier: !isProduction ? require('pino-colada') : undefined
-  })
-
   const server = fastify({
-    logger: logger
+    logger: isProduction || logger
   })
 
   await server.register(superfly, {
