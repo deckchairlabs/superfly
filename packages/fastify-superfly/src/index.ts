@@ -1,9 +1,9 @@
-import { SuperflyContext, SuperflyRendererFactory } from './types'
 import plugin from './plugin'
+import { SuperflyRenderContext, SuperflyRendererFactory } from './types'
 
 export type {
-  SuperflyContext,
+  SuperflyRenderContext,
   SuperflyRendererFactory
-} 
+}
 
 export default plugin

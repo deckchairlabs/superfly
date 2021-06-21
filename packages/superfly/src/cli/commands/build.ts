@@ -1,4 +1,4 @@
-import { createViteConfig } from '@deckchairlabs/fastify-superfly/vite'
+import { createViteConfig } from '@deckchairlabs/vite-plugin-superfly'
 import { Handler } from 'sade'
 import * as vite from 'vite'
 
@@ -7,7 +7,6 @@ type BuildArgs = {
 }
 
 const build: Handler = async (args: BuildArgs) => {
-  console.log(args)
   const config = createViteConfig(process.cwd())
   const ssrConfig = createViteConfig(process.cwd(), true)
 

@@ -1,14 +1,26 @@
+import {
+  LinksFunction,
+  LoaderFunction,
+  MetaFunction
+} from '@deckchairlabs/superfly'
 import React from 'react'
-import { LinksResolver, MetaResolver } from '@deckchairlabs/superfly'
 
-export const links: LinksResolver = () => {
+export const links: LinksFunction = () => {
   return []
 }
 
-export const meta: MetaResolver = () => {
+export const meta: MetaFunction = () => {
   return {
     title: 'Home'
   }
+}
+
+type LoaderData = {
+  foo: string
+}
+
+export const loader: LoaderFunction<LoaderData> = () => {
+  return { foo: 'bar' }
 }
 
 export default function IndexPage(props: any) {

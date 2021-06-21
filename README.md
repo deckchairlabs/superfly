@@ -31,6 +31,7 @@ Add the following to your projects `package.json`
 ```
 
 ### Configuration
+
 TODO
 
 ```js
@@ -42,10 +43,13 @@ TODO
 Borrow from vite/fastify, or just expose their plugin APIs.
 
 ### Meta tags
+
 TODO
 
 ### Link tags
+
 TODO
 
 ### Server side data fetching
+
 TODO

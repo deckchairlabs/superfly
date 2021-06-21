@@ -11,6 +11,7 @@
     "release": "yarn build && changeset publish --tag experimental"
   },
   "workspaces": [
+    "example",
     "packages/*"
   ],
   "preconstruct": {

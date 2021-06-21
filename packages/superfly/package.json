@@ -11,6 +11,7 @@
   "devDependencies": {
     "@types/merge2": "^1.3.0",
     "@types/node-fetch": "^2.5.10",
+    "@types/pino": "^6.3.8",
     "@types/sade": "^1.7.2",
     "react": "^17.0.2"
   },
@@ -20,19 +21,23 @@
   "dependencies": {
     "@deckchairlabs/fastify-superfly": "0.0.0-202152071054",
     "@deckchairlabs/vite-plugin-superfly": "0.0.0-202152071054",
+    "cosmiconfig": "^7.0.0",
     "fastify": "^3.18.0",
     "fastify-compress": "^3.6.0",
     "fastify-helmet": "^5.3.1",
     "fastify-plugin": "^3.0.0",
     "fastify-static": "^4.2.2",
+    "kleur": "^4.1.4",
     "merge2": "^1.4.1",
     "middie": "^5.2.0",
     "node-fetch": "^2.6.1",
-    "pino-pretty": "^5.0.2",
+    "pino": "^6.11.3",
+    "pino-colada": "^2.1.0",
     "sade": "^1.7.4",
     "v8-compile-cache": "^2.3.0",
     "vite": "^2.3.8",
-    "vite-plugin-ssr": "^0.1.2"
+    "vite-plugin-ssr": "^0.1.2",
+    "zod": "^3.2.0"
   },
   "preconstruct": {
     "entrypoints": [

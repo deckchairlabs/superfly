@@ -24,6 +24,7 @@ const superfly = fp<SuperflyPluginOptions>(async (fastify, options) => {
     isProduction,
     root = process.cwd(),
     createRenderer,
+    devServerConfig,
     compress
   } = options
 
@@ -44,8 +45,12 @@ const superfly = fp<SuperflyPluginOptions>(async (fastify, options) => {
       maxAge: '1y'
     })
   } else {
+    if (!devServerConfig) {
+      throw new Error('No devServerConfig was provided.')
+    }
+
     await fastify.register(middie)
-    viteDevServer = await createViteDevServer(root)
+    viteDevServer = await createViteDevServer(devServerConfig)
     fastify.use(viteDevServer.middlewares)
   }
 

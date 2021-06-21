@@ -1,15 +1,21 @@
 import { Handler } from 'sade'
-import createServer from '../../server'
+import { GlobalArgs } from '../../cli'
+import { ResolvedConfig } from '../../types'
+import createServer from './createServer'
 
-const dev: Handler = async () => {
-  const port = process.env.PORT || 3000
-  const host = '0.0.0.0'
+type DevArgs = GlobalArgs & {
+  port: number
+}
 
-  const server = await createServer({
-    mode: 'development'
-  })
-
-  return server.listen(port, host)
+const dev: Handler = async (args: DevArgs, config: ResolvedConfig) => {
+  try {
+    return createServer({
+      root: process.cwd(),
+      mode: 'development',
+      port: args.port
+    })
+  } finally {
+  }
 }
 
 export default dev
